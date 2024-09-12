@@ -1,130 +1,66 @@
 "use client";
 
 import React, { Suspense, useEffect, useRef } from "react";
-import { Canvas, useLoader } from "@react-three/fiber";
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
-import {
-  DoubleSide,
-  MeshBasicMaterial,
-  BufferGeometry,
-  Mesh,
-  Object3D,
-  Line,
-  ShapeGeometry,
-} from "three";
+import { Canvas, useThree } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { OrbitControls, Text } from "@react-three/drei";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Text3D() {
+function Text3d() {
   const textRef = useRef();
-  const lineRef = useRef();
-  const content = "5 Years Marketing \n in Hotel Industry";
-  const font = useLoader(FontLoader, "assets/fonts/Lato_Regular.json");
-  const color = "#414141";
+  const { viewport } = useThree();
+  const CONTENT = "5 Years Marketing \n in Hotel Industry";
+  const COLOR = "#414141";
 
   useEffect(() => {
-    const shapes = font.generateShapes(content, 2);
-    const textGeometry = new ShapeGeometry(shapes);
-
-    textGeometry.computeBoundingBox();
-    const xMid =
-      -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
-    textGeometry.translate(xMid, 0, 0);
-
-    const textMaterial = new MeshBasicMaterial({
-      color: color,
-      transparent: true,
-      opacity: 0.5,
-      side: DoubleSide,
-    });
-
-    const lineMaterial = new MeshBasicMaterial({
-      color: color,
-      side: DoubleSide,
-    });
-
-    const textMesh = new Mesh(textGeometry, textMaterial);
-
-    textRef.current.add(textMesh);
-
-    const holeShapes = [];
-    for (let i = 0; i < shapes.length; i++) {
-      const shape = shapes[i];
-      if (shape.holes && shape.holes.length > 0) {
-        for (let j = 0; j < shape.holes.length; j++) {
-          const hole = shape.holes[j];
-          holeShapes.push(hole);
-        }
-      }
-    }
-    shapes.push.apply(shapes, holeShapes);
-
-    const lineText = new Object3D();
-    for (let i = 0; i < shapes.length; i++) {
-      const shape = shapes[i];
-      const points = shape.getPoints();
-      const geometry = new BufferGeometry().setFromPoints(points);
-      geometry.translate(xMid, 0, 0);
-      const lineMesh = new Line(geometry, lineMaterial);
-
-      lineText.add(lineMesh);
-    }
-
-    lineRef.current.add(lineText);
-
-    const combinedRefs = { scale: 1 };
-
-    gsap.to(combinedRefs, {
-      scale: 8,
-      scrollTrigger: {
-        trigger: "#text-section",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-        onUpdate: (self) => {
-          if (textRef.current && lineRef.current) {
-            textRef.current.scale.set(
-              combinedRefs.scale,
-              combinedRefs.scale,
-              combinedRefs.scale
-            );
-            lineRef.current.scale.set(
-              combinedRefs.scale,
-              combinedRefs.scale,
-              combinedRefs.scale
-            );
-          }
-
-          // Optional: Allow scroll to the next scene once the scale reaches the target
-          if (self.progress >= 1) {
-            ScrollTrigger.refresh(); // Example refresh call to update triggers
-          }
+    if (textRef.current) {
+      gsap.to(textRef.current.scale, {
+        scrollTrigger: {
+          trigger: "#textSection",
+          start: "top center",
+          end: "bottom top",
+          scrub: true,
         },
-      },
-    });
-  }, []);
+        x: viewport.width / 5,
+        y: viewport.width / 5,
+        z: viewport.width / 5,
+      });
+    }
+  }, [viewport.width]);
 
   return (
-    <>
-      <group ref={textRef} position={[0, 0, -130]} scale={[1, 1, 1]} />
-      <group ref={lineRef} position={[0, 0, -100]} scale={[1, 1, 1]} />
-    </>
+    <group ref={textRef} rotation={[-0.2, 0, 0]} scale={viewport.width / 12}>
+      <mesh position={[0, 0, 0]}>
+        <Text font="assets/fonts/Lato-Black.ttf" fontSize={0.5} color={COLOR}>
+          {CONTENT}
+          <meshBasicMaterial />
+        </Text>
+      </mesh>
+      <mesh position={[0, 0, -2]}>
+        <Text font="assets/fonts/Lato-Black.ttf" fontSize={0.5}>
+          {CONTENT}
+          <meshBasicMaterial />
+        </Text>
+      </mesh>
+    </group>
   );
 }
 
 const Intro = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <section className="bg-white dark:bg-gray-900" id="3dText">
-        <div className="w-full h-screen">
-          <Canvas camera={{ position: [0, 0, 2], fov: 50 }}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 10]} intensity={1} />
-            <Text3D />
-          </Canvas>
-        </div>
+      <section
+        className="bg-white dark:bg-gray-900 w-full h-full"
+        id="textSection"
+      >
+        <Canvas camera={{ position: [0, 0, 3], fov: 50 }}>
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[10, 10, 10]} intensity={1} />
+          <Text3d />
+          {/* <OrbitControls /> */}
+        </Canvas>
       </section>
     </Suspense>
   );

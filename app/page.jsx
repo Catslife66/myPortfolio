@@ -1,19 +1,26 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
-import SphereScene from "./components/Sphere";
+// import SphereScene from "./components/Sphere";
+import dynamic from "next/dynamic";
+
+const Hero = dynamic(() => import("./components/Hero"), {
+  ssr: false,
+});
+
+const Intro = dynamic(() => import("./components/Intro"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
-    <main className="bg-[#D0D0D0] w-full relative">
+    <main className="w-full relative">
       <div className="w-full h-screen">
-        <div className="w-full h-screen flex justify-center items-center absolute text-2xl">
-          Hi, I'm
-          <br />
-          Xiaohong Zhuang.
-        </div>
-        <SphereScene />
+        <Hero />
       </div>
+      <div className="w-full h-full" style={{ height: "1400px" }}>
+        <Intro />
+      </div>
+      <div className="w-full h-screen">hello</div>
     </main>
   );
 }

@@ -1,9 +1,8 @@
-"use client";
-
 import React, { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import vertexShader from "./vertexShader";
 import fragmentShader from "./fragmentShader";
+import { Environment } from "@react-three/drei";
 
 const Blob = () => {
   const blobRef = useRef();
@@ -44,7 +43,8 @@ const BlobScene = () => {
     <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
-      <Blob />
+      <Environment preset="forest" />
+      <Blob position={[0, 0, 0]} />
     </Canvas>
   );
 };
