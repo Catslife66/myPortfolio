@@ -1,26 +1,27 @@
 "use client";
 
-// import SphereScene from "./components/Sphere";
 import dynamic from "next/dynamic";
 
-const Hero = dynamic(() => import("./components/Hero"), {
-  ssr: false,
-});
-
-const Intro = dynamic(() => import("./components/Intro"), {
+const HeroScene = dynamic(() => import("./components/Hero/HeroScene"), {
   ssr: false,
 });
 
 export default function Home() {
+  // useEffect(() => {
+  //   (async () => {
+  //     const LocomotiveScroll = (await import("locomotive-scroll")).default;
+  //     const locomotiveScroll = new LocomotiveScroll();
+  //   })();
+  // }, []);
+
   return (
-    <main className="w-full relative">
+    <main className="">
       <div className="w-full h-screen">
-        <Hero />
+        <div className="w-full h-full">
+          <HeroScene />
+        </div>
+        <Overlay />
       </div>
-      <div className="w-full h-full" style={{ height: "1400px" }}>
-        <Intro />
-      </div>
-      <div className="w-full h-screen">hello</div>
     </main>
   );
 }
