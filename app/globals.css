@@ -2,22 +2,163 @@
 @tailwind components;
 @tailwind utilities;
 
-.contentTarget {
-  right: 1000px;
+/* loader component */
+@keyframes load-in {
+  from {
+    transform: translateY(4rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
 
-.overlay {
-  height: 100%;
-  pointer-events: none;
+.animate-appear {
+  animation: load-in 1s ease-in-out;
+}
+
+.loader-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: pink;
+  clip-path: inset(0%);
+  z-index: 1000;
+}
+
+.loader {
+  position: absolute;
+  font-size: 3.75rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading {
+  overflow: hidden;
+  height: 100vh;
+  opacity: 0;
+}
+
+/* h2 title component */
+.spin-container {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.original {
+  perspective: 600px;
+}
+
+.copy span {
+  transform: rotateX(-90deg) translateY(-50%);
+  opacity: 0;
+}
+
+/* hero section */
+.char-shadow {
+  position: absolute;
+  top: 1rem;
+  left: -1rem;
+  z-index: 0;
+}
+
+/* work experience */
+
+.masking {
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #1d3557;
+  clip-path: circle(0%);
+  background-color: #a8dadc;
 }
 
-.hero-wrapper {
-  padding: 8rem 0rem;
+.x {
+  position: relative;
+  width: 400px;
+  height: 100px;
+}
+
+.x ::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  /* clip-path: path(
+    "M55.6875 76C43.6458 61.9583 31.0208 42.5625 17.8125 17.8125C14.1458 10.9375 11.2083 5 9 0C5.91667 0.25 2.91667 0.375 0 0.375C7.625 17.2083 16.4583 33.6875 26.5 49.8125C33.125 60.5625 39.5208 69.4792 45.6875 76.5625C47.3958 76.4375 49.0625 76.3125 50.6875 76.1875C52.3542 76.0625 54.0208 76 55.6875 76Z"
+  ); */
+  z-index: 1;
+  background-color: lightgreen;
+}
+
+.fg {
+  border-radius: 100%;
+  color: blue;
+  width: 500px;
+  height: 500px;
+  /* background-color: pink; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+  color: yellowgreen;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  clip-path: inset(0 100% 0 0);
+}
+
+.wrapper {
+  position: relative;
+}
+
+.text-container {
+  width: 100%;
+}
+
+.mask-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: pink; /* Placeholder background */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+/* skills */
+
+.card-container {
+  max-height: 400px;
+}
+
+/* test */
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }

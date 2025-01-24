@@ -1,12 +1,13 @@
-import Header from "./components/Header";
+import { Montserrat } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
-import { Lato } from "next/font/google";
+import Header from "./components/Header";
 
-export const lato = Lato({
+export const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-lato",
-  weight: ["100", "300", "400", "700", "900"],
+  variable: "--font-montserrat",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata = {
@@ -16,11 +17,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={lato.className}>
+    <html lang="en" className={montserrat.className}>
       <body>
         <Header />
         {children}
-        <script src="js/flowbite.min.js"></script>
+        <footer>some footer</footer>
+        {/* <Script src="/assets/js/flowbite.min.js" strategy="beforeInteractive" /> */}
       </body>
     </html>
   );

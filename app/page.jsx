@@ -2,26 +2,27 @@
 
 import dynamic from "next/dynamic";
 
-const HeroScene = dynamic(() => import("./components/Hero/HeroScene"), {
-  ssr: false,
-});
+import ExperienceList from "./sections/Experience/ExperienceList";
+import SkillSection from "./sections/SkillSection";
+import Heading2 from "./components/Heading2";
+import Experience from "./sections/Experience/Index";
 
 export default function Home() {
-  // useEffect(() => {
-  //   (async () => {
-  //     const LocomotiveScroll = (await import("locomotive-scroll")).default;
-  //     const locomotiveScroll = new LocomotiveScroll();
-  //   })();
-  // }, []);
-
   return (
-    <main className="">
-      <div className="w-full h-screen">
-        <div className="w-full h-full">
-          <HeroScene />
-        </div>
-        <Overlay />
+    <>
+      <div className="w-full h-screen ">
+        <Heading2 content={"HELLO THERE"} />
       </div>
-    </main>
+
+      <div className="h-screen bg-purple-400">{/* <SkillSection /> */}</div>
+
+      <div className="h-screen bg-amber-400">
+        {/* <Experience />
+        <ExperienceList /> */}
+      </div>
+      <div className="h-screen bg-red-400"></div>
+      <div className="h-screen bg-green-400"></div>
+      <div className="h-screen bg-blue-400"></div>
+    </>
   );
 }
