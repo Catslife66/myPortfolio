@@ -9,7 +9,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-lato)", "sans-serif"],
+        sans: ["var(--font-montserrat)", "sans-serif"],
+      },
+      colors: {
+        themeBlueD: "#61A0AF",
+        themeBlueL: "#96C9DC",
+        themePinkD: "#F06C9B",
+        themePinkL: "#F9B9B7",
+        themeYellow: "#F5D491",
+        themeWhite: "#F2F1F0",
+        themeBlack: "#181818",
       },
     },
   },

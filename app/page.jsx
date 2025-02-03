@@ -2,27 +2,30 @@
 
 import dynamic from "next/dynamic";
 
-import ExperienceList from "./sections/Experience/ExperienceList";
+import ExperienceList from "./sections/Experience/ExperienceItem";
 import SkillSection from "./sections/SkillSection";
 import Heading2 from "./components/Heading2";
 import Experience from "./sections/Experience/Index";
+import NavLink from "./components/NavLink";
+import Hero from "./sections/Hero/Index";
 
 export default function Home() {
   return (
     <>
-      <div className="w-full h-screen ">
-        <Heading2 content={"HELLO THERE"} />
+      <div className="bg-themeWhite">
+        <Hero />
       </div>
-
-      <div className="h-screen bg-purple-400">{/* <SkillSection /> */}</div>
-
-      <div className="h-screen bg-amber-400">
-        {/* <Experience />
-        <ExperienceList /> */}
+      <div className="">
+        <Experience />
       </div>
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
+
+      {/* <div className="h-screen"></div>
       <div className="h-screen bg-red-400"></div>
       <div className="h-screen bg-green-400"></div>
-      <div className="h-screen bg-blue-400"></div>
+      <div className="h-screen bg-blue-400"></div> */}
     </>
   );
 }

@@ -1,7 +1,6 @@
 import { Montserrat } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Header from "./components/Header";
 
 export const montserrat = Montserrat({
   subsets: ["latin"],
@@ -19,9 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={montserrat.className}>
       <body>
-        <Header />
         {children}
-        <footer>some footer</footer>
         {/* <Script src="/assets/js/flowbite.min.js" strategy="beforeInteractive" /> */}
       </body>
     </html>

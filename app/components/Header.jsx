@@ -1,23 +1,46 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import gsap from "gsap";
+import NavLink from "./NavLink";
+import Logo from "./Logo";
 
 const Header = () => {
+  const currentPath = usePathname();
+  const router = useRouter();
+
+  const handleChangePath = (e) => {
+    e.preventDefault();
+    const nextPath = e.currentTarget.getAttribute("href");
+    if (currentPath !== nextPath) {
+      gsap.to(".block", {
+        scaleY: 1,
+        ease: "power1.in",
+        stagger: {
+          each: 0.1,
+          axis: "x",
+        },
+        onComplete: () => {
+          gsap.set(".block", { scaleY: 1 });
+          router.push(nextPath);
+        },
+      });
+    }
+  };
+
   return (
     <nav className="bg-transparent z-10 w-full fixed">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
-          href="https://flowbite.com/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
+        <Link
+          href={"/"}
+          className="link flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Flowbite
+          <span>
+            <Logo />
           </span>
-        </a>
+        </Link>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -43,13 +66,12 @@ const Header = () => {
           </svg>
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-transparent md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <NavLink title="TestLink" href={"/test"} onClick={handleChangePath} />
+          {/* <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-transparent md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link href={"/"}>Home</Link>
             </li>
-            <li>
-              <Link href={"/test"}>Test</Link>
-            </li>
+
             <li>
               <a
                 href="#"
@@ -74,7 +96,7 @@ const Header = () => {
                 Contact
               </a>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </nav>
