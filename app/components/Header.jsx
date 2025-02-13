@@ -32,7 +32,7 @@ const Header = () => {
 
   return (
     <nav className="bg-transparent z-10 w-full fixed">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           href={"/"}
           className="link flex items-center space-x-3 rtl:space-x-reverse"

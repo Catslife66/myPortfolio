@@ -26,8 +26,8 @@ export default function Template({ children }) {
 
   return (
     <>
-      <Cursor />
-      <Header />
+      {/* <Cursor /> */}
+      {/* <Header /> */}
       {/* page loading animation */}
       {/* <div className="load-animation-container">
         <div className="col">

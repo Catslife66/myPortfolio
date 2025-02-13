@@ -17,8 +17,10 @@ export default function Cursor() {
       } else {
         gsap.to(mouseRef.current, {
           opacity: 1,
-          x: e.clientX - 10,
-          y: e.clientY - 10,
+          translateX: e.clientX,
+          translateY: e.clientY,
+          xPercent: -50,
+          yPercent: -50,
           duration: 0.05,
           ease: "power1.inOut",
         });
@@ -35,7 +37,7 @@ export default function Cursor() {
   return (
     <div
       ref={mouseRef}
-      className="fixed rounded-full bg-themePinkL"
+      className="fixed rounded-full bg-themePinkL z-10"
       style={{
         width: "20px",
         height: "20px",

@@ -1,20 +1,22 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import React, { useLayoutEffect } from "react";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
-export default function Heading2({ content }) {
+export default function Heading2({ className = "text-xl", content = "" }) {
   const contentArray = content.split("");
+  const headingRef = useRef(null);
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
 
-    const original = document.querySelector(".original");
-    const copy = document.querySelector(".copy");
+      const original = document.querySelector(".original");
+      const copy = document.querySelector(".copy");
 
-    const originalSpans = original.querySelectorAll(".spin-text");
-    const copySpans = copy.querySelectorAll(".spin-text");
+      const originalSpans = original.querySelectorAll(".spin-text");
+      const copySpans = copy.querySelectorAll(".spin-text");
 
-    const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".original",
@@ -68,36 +70,34 @@ export default function Heading2({ content }) {
           },
           0
         );
-    });
-    return () => ctx.revert();
-  }, []);
+    },
+    { scope: headingRef.current }
+  );
 
   return (
-    <>
-      <div className="spin-container">
-        <h2 className="original flex flex-row">
-          {contentArray.map((char, i) => (
-            <span
-              key={i}
-              className="spin-text text-red-200"
-              style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-            >
-              {char}
-            </span>
-          ))}
-        </h2>
-        <h2 className="copy flex flex-row">
-          {contentArray.map((char, i) => (
-            <span
-              key={i}
-              className="spin-text text-red-800"
-              style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-            >
-              {char}
-            </span>
-          ))}
-        </h2>
-      </div>
-    </>
+    <div ref={headingRef} className={className}>
+      <h2 className="original flex flex-row py-8">
+        {contentArray.map((char, i) => (
+          <span
+            key={i}
+            className="spin-text char-stroke text-white"
+            style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+          >
+            {char}
+          </span>
+        ))}
+      </h2>
+      <h2 className="copy flex flex-row -mt-8">
+        {contentArray.map((char, i) => (
+          <span
+            key={i}
+            className="spin-text text-green-800"
+            style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+          >
+            {char}
+          </span>
+        ))}
+      </h2>
+    </div>
   );
 }
