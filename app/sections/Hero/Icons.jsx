@@ -15,14 +15,12 @@ export default function Icons({ pathClassName = "", content = "" }) {
             d="M0,90 
          A90,90 0 1,1 180,90 
          A90,90 0 1,1 0,90"
-            fill="none"
+            fill="black"
             stroke="black"
           />
         </defs>
         <text className="text-lg" fill="black">
-          <textPath className="text-move" href={`#${pathClassName}`}>
-            {content}
-          </textPath>
+          <textPath href={`#${pathClassName}`}>{content}</textPath>
         </text>
       </svg>
     </div>

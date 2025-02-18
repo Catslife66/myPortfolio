@@ -43,7 +43,7 @@ export default function Hero() {
       textMoveGroup.forEach((textPath, _i) => {
         gsap.to(textPath, {
           rotate: "+=360",
-          duration: 6,
+          duration: 10,
           repeat: -1,
           ease: "none",
         });
@@ -58,39 +58,39 @@ export default function Hero() {
         repeat: -1,
       });
 
-      // gsap.registerPlugin(ScrollTrigger);
+      gsap.registerPlugin(ScrollTrigger);
 
-      // const tl = gsap.timeline({
-      //   scrollTrigger: {
-      //     trigger: heroSectionRef.current,
-      //     pin: true,
-      //     start: "top top",
-      //     end: `+=200`,
-      //     scrub: 1,
-      //     markers: true,
-      //   },
-      // });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroSectionRef.current,
+          pin: true,
+          start: "top top",
+          end: `+=200`,
+          scrub: 1,
+          markers: true,
+        },
+      });
 
-      // tl.to(".hero-animation-wrapper", {
-      //   scale: 1,
-      //   transformOrigin: "center center",
-      // })
-      //   .to(
-      //     shadow1Ref.current,
-      //     {
-      //       x: -50,
-      //       y: -100,
-      //     },
-      //     0
-      //   )
-      //   .to(
-      //     shadow2Ref.current,
-      //     {
-      //       x: 50,
-      //       y: 100,
-      //     },
-      //     0
-      //   );
+      tl.to(".hero-animation-wrapper", {
+        scale: 1,
+        transformOrigin: "center center",
+      })
+        .to(
+          shadow1Ref.current,
+          {
+            x: -50,
+            y: -100,
+          },
+          0
+        )
+        .to(
+          shadow2Ref.current,
+          {
+            x: 50,
+            y: 100,
+          },
+          0
+        );
     },
     { scope: heroSectionRef.current }
   );
@@ -111,7 +111,7 @@ export default function Hero() {
     >
       <div className="relative w-full mx-auto flex flex-col justify-center items-center">
         <div className="relative">
-          <div className="z-10 relative char-stroke text-white px-4 text-6xl font-extrabold text-center uppercase md:text-[120px]">
+          <div className="z-10 relative char-stroke px-4 text-white text-6xl font-extrabold text-center uppercase md:text-[120px]">
             Xiaohong
           </div>
           <div
@@ -126,7 +126,7 @@ export default function Hero() {
           strong background in Marketing.
         </div>
         <div className="relative">
-          <div className="z-10 relative char-stroke text-white px-4 text-6xl font-extrabold text-center uppercase md:text-[120px]">
+          <div className="z-10 relative char-stroke px-4 text-white text-6xl font-extrabold text-center uppercase md:text-[120px]">
             Zhuang
           </div>
           <div
@@ -149,7 +149,7 @@ export default function Hero() {
         </div>
       </div>
       <FloatIcons />
-      {/* <div className="hero-animation-wrapper"></div> */}
+      <div className="hero-animation-wrapper"></div>
     </div>
   );
 }

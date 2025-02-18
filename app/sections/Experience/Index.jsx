@@ -26,11 +26,12 @@ export default function ExperienceSection() {
         scrollTrigger: {
           trigger: divRef.current,
           scrub: 1,
-          pin: introRef.current,
-          start: "top 20%",
-          end: "+=500",
+          pin: true,
+          start: "top top",
+          endTrigger: detailRef.current,
+          end: "top top",
           ease: "none",
-          // markers: true,
+          duration: 2,
         },
       });
       tl.to(mask1Ref.current, {
@@ -46,20 +47,21 @@ export default function ExperienceSection() {
           clipPath: clipShape,
         })
         .to(detailRef.current, {
-          y: "-500",
+          yPercent: -100,
+          duration: 1,
         });
     },
     { scope: divRef.current }
   );
 
   return (
-    <div ref={divRef} className="w-full md:mt-[8rem]">
+    <div ref={divRef} className="relative w-full h-screen bg-purple-100">
       <div
         ref={introRef}
-        className="relative max-w-screen-lg mx-auto px-4 py-[4rem] text-xl font-bold md:text-3xl md:py-[8rem] lg:text-4xl"
+        className="relative w-full h-screen mx-auto justify-center items-center px-4 py-[4rem] text-xl font-bold md:text-3xl md:py-[8rem] lg:text-4xl"
       >
         {/* text outline */}
-        <div className="flex flex-col justify-center items-center">
+        <div className="relative w-full h-full flex flex-col justify-center items-center">
           <div className="flex flex-row flex-wrap mb-8">
             {content1.map((char, i) => (
               <span key={i} className="char-stroke text-white pe-4">
@@ -90,7 +92,7 @@ export default function ExperienceSection() {
           </div>
         </div>
         {/* text fill */}
-        <div className="absolute top-0 left-0 w-full h-full text-yellow-500 justify-center items-center px-4 py-[4rem] md:py-[8rem] flex flex-wrap">
+        <div className="absolute top-0 left-0 w-full h-full text-yellow-500 justify-center items-center px-4 py-[4rem] md:py-[8rem] flex flex-col">
           <div
             ref={mask1Ref}
             className="text-mask flex flex-row flex-wrap mb-8"
@@ -134,7 +136,10 @@ export default function ExperienceSection() {
         </div>
       </div>
       {/* experience details */}
-      <div ref={detailRef} className="detail-section  py-4 md:py-[8rem]">
+      <div
+        ref={detailRef}
+        className="detail-section absolute bottom-0 py-4 md:py-[8rem]"
+      >
         <ExperienceDetail />
       </div>
     </div>

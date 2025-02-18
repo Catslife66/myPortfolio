@@ -177,7 +177,7 @@
 }
 
 .text-1-path::before {
-  background-image: url("/assets/images/bird.jpg");
+  background-image: url("/assets/images/moon-face.svg");
 }
 
 .text-2-path {
@@ -187,7 +187,7 @@
 }
 
 .text-2-path::before {
-  background-image: url("/assets/images/bird.jpg");
+  background-image: url("/assets/images/face-wink.svg");
 }
 
 .text-3-path {
@@ -197,7 +197,7 @@
 }
 
 .text-3-path::before {
-  background-image: url("/assets/images/bird.jpg");
+  background-image: url("/assets/images/record-player.svg");
 }
 
 .text-4-path {
@@ -258,52 +258,22 @@
 }
 
 /* skills */
-.card-container {
-  max-height: 800px;
-}
 
-.cardgroup {
-  position: relative;
+.cardImg {
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 200px;
+  border-radius: 5%;
+  background-color: gold;
 }
 
-.card {
-  position: absolute;
-  width: 100%;
-  height: 332px;
-}
-
-.card1Img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card1 {
-  /* top: 0%; */
-  transform: translate(0, 0%);
-}
-
-.card2 {
-  /* top: 25%; */
-  transform: translate(0, 100%);
-}
-.card3 {
-  /* top: 50%; */
-  transform: translate(0, 200%);
-}
-.card4 {
-  /* top: 75%; */
-  transform: translate(0, 300%);
-}
 /* test */
 
 .no-scroll {
   overflow: hidden;
   height: 100vh;
 }
+
+/* md */
 
 @media (min-width: 768px) {
   .hero-heading-container {
@@ -320,9 +290,11 @@
     font-size: 6rem;
   }
 
-  .card1Img {
+  .card {
+    height: 332px;
   }
 }
 
+/* lg */
 @media (min-width: 1024px) {
 }
