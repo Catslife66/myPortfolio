@@ -15,16 +15,21 @@ export default function ModelScene() {
         position: [-3, 4.5, 52],
         fov: 20,
       }}
-      style={{ width: "100%", height: "100%" }}
+      style={{
+        width: "100%",
+        height: "100%",
+        borderRadius: "5%",
+        transformOrigin: "center center",
+      }}
     >
-      <fog attach="fog" args={["lightpink", 60, 100]} />
+      <fog attach="fog" args={["lightpink", -10, 100]} />
       <Suspense fallback={null}>
-        <ambientLight intensity={2} />
+        <ambientLight intensity={1} />
+
         <Model position={[-4.5, -4, 0]} rotation={[0, -2.8, 0]} />
         <spotLight position={[50, 50, -30]} castShadow />
-
-        <directionalLight position={[0, -5, 0]} color="red" intensity={2} />
         <Environment preset="warehouse" />
+        <OrbitControls />
       </Suspense>
     </Canvas>
   );

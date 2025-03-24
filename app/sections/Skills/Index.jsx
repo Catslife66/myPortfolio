@@ -3,6 +3,10 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import ModelScene from "./ModelScene";
+import WordCloudScene from "./WordCloudScene";
+import LetterShapeScene from "./LetterShapeScene";
+import CityScene from "./CityScene";
+import VideoScene from "./VideoScene";
 
 export default function SkillIndex() {
   const groupRef = useRef(null);
@@ -74,7 +78,7 @@ export default function SkillIndex() {
               scrub: 1,
             },
           });
-          imgScrollTl.fromTo(img, { scale: 0.5 }, { scale: 1 });
+          imgScrollTl.from(img, { x: 200 });
         });
       }
 
@@ -189,8 +193,8 @@ export default function SkillIndex() {
             </ul>
           </div>
         </div>
-        <div className="w-full h-[200px] rounded-sm bg-pink-200 md:w-1/3 md:h-[300px]">
-          <ModelScene />
+        <div className="cardImg w-full h-[200px] rounded-sm bg-black  md:w-1/3 md:h-[300px]">
+          <WordCloudScene />
         </div>
       </li>
 
@@ -221,7 +225,9 @@ export default function SkillIndex() {
             </ul>
           </div>
         </div>
-        <div className="cardImg md:w-1/3 md:h-[300px]"></div>
+        <div className="cardImg md:w-1/3 md:h-[300px]">
+          <CityScene />
+        </div>
       </li>
 
       <li
@@ -249,7 +255,9 @@ export default function SkillIndex() {
             </ul>
           </div>
         </div>
-        <div className="cardImg md:w-1/3 md:h-[300px]"></div>
+        <div className="cardImg md:w-1/3 md:h-[300px]">
+          <VideoScene />
+        </div>
       </li>
 
       <li

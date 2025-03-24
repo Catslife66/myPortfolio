@@ -55,7 +55,7 @@ export default function ExperienceSection() {
   );
 
   return (
-    <div ref={divRef} className="relative w-full h-screen bg-purple-100">
+    <div ref={divRef} className="relative w-full h-screen">
       <div
         ref={introRef}
         className="relative w-full h-screen mx-auto justify-center items-center px-4 py-[4rem] text-xl font-bold md:text-3xl md:py-[8rem] lg:text-4xl"

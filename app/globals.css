@@ -53,6 +53,11 @@
 }
 
 /* h2 title component */
+.line2 {
+  transform: rotateX(-90deg);
+  opacity: 0;
+}
+
 .original {
   perspective: 600px;
 }
@@ -125,30 +130,9 @@
 }
 
 /* hero section */
-.hero-animation-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  transform: scale(1, 0);
-  background-color: green;
-  z-index: 10;
-}
-
-.section-bg {
-  background-color: rgb(245, 212, 145, 15%);
-}
-
 .h1-shadow {
   color: green;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
   transform: translate(1%, 4%);
-  z-index: 1;
 }
 
 .text-path {
@@ -181,7 +165,7 @@
 }
 
 .text-2-path {
-  top: -10%;
+  top: -20%;
   left: 10%;
   scale: 0.75;
 }
@@ -211,6 +195,15 @@
 }
 
 /* work experience */
+.layer {
+  clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+  background-color: burlywood;
+  transform-origin: center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .mask-img {
   position: absolute;
   top: 0;
@@ -260,10 +253,10 @@
 /* skills */
 
 .cardImg {
-  width: 100%;
-  height: 200px;
   border-radius: 5%;
-  background-color: gold;
+  /* width: 100%;
+  height: 200px;
+  background-color: gold; */
 }
 
 /* test */
