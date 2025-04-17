@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
 import NavLink from "./NavLink";
-import Logo from "./Logo";
 
 const Header = () => {
   const currentPath = usePathname();
   const router = useRouter();
+  const navRef = useRef(null);
+  const [isClosed, setIsClosed] = useState(true);
 
   const handleChangePath = (e) => {
     e.preventDefault();
@@ -17,13 +18,11 @@ const Header = () => {
     if (currentPath !== nextPath) {
       gsap.to(".block", {
         scaleY: 1,
-        ease: "power1.in",
+        ease: "power1.inOut",
         stagger: {
-          each: 0.1,
-          axis: "x",
+          from: "random",
         },
         onComplete: () => {
-          gsap.set(".block", { scaleY: 1 });
           router.push(nextPath);
         },
       });
@@ -31,72 +30,78 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-transparent z-10 w-full fixed">
-      <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link
-          href={"/"}
-          className="link flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <span>
-            <Logo />
-          </span>
-        </Link>
-        <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-default"
-          aria-expanded="false"
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
+    <nav ref={navRef} className="bg-transparent w-full fixed p-4 z-100">
+      <div className="w-full h-full px-8 flex flex-col items-center mx-auto md:flex-row md:justify-between">
+        <div className="w-full flex flex-row justify-between">
+          <Link
+            href={"/"}
+            onClick={handleChangePath}
+            className="flex items-center px-4 py-2 rounded-xl font-light hover:text-purple-500"
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 1h15M1 7h15M1 13h15"
+            <span className="text-xl font-extrabold text-shade">JosieDev</span>
+          </Link>
+          <button
+            type="button"
+            className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100"
+            onClick={() => setIsClosed(!isClosed)}
+          >
+            {isClosed ? (
+              <svg
+                className="w-6 h-6 text-gray-800"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  d="M5 7h14M5 12h14M5 17h14"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-6 h-6 text-gray-800"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18 17.94 6M18 18 6.06 6"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
+        <div className="w-full hidden md:flex md:justify-end md:items-center">
+          <ul className="flex flex-col font-medium md:flex-row md:gap-4">
+            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
+            <NavLink
+              title="Projects"
+              href={"/test"}
+              onClick={handleChangePath}
             />
-          </svg>
-        </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <NavLink title="TestLink" href={"/test"} onClick={handleChangePath} />
-          {/* <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-transparent md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
-              <Link href={"/"}>Home</Link>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Services
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Pricing
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Contact
-              </a>
-            </li>
-          </ul> */}
+            <NavLink title="Q&A" href={"/another"} onClick={handleChangePath} />
+            <NavLink
+              title="Contact"
+              href={"/test"}
+              onClick={handleChangePath}
+            />
+          </ul>
+        </div>
+        <div className={`w-full py-8 ${isClosed ? "hidden" : ""}`}>
+          <ul className="flex flex-col space-y-8">
+            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
+            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
+            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
+            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
+          </ul>
         </div>
       </div>
     </nav>

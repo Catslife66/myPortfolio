@@ -2,22 +2,30 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import ModelScene from "./ModelScene";
-import WordCloudScene from "./WordCloudScene";
-import LetterShapeScene from "./LetterShapeScene";
-import CityScene from "./CityScene";
-import VideoScene from "./VideoScene";
+import SectionIntro from "@/app/components/SectionIntro";
+import {
+  programmingImgGroup,
+  skillsetContent,
+  skillsetImgGroup,
+} from "@/app/data/textContent";
 
 export default function SkillIndex() {
-  const groupRef = useRef(null);
+  const cardGroupRef = useRef(null);
   const card1Ref = useRef(null);
   const card2Ref = useRef(null);
   const card3Ref = useRef(null);
   const card4Ref = useRef(null);
+  const cardRefArray = [card1Ref, card2Ref, card3Ref, card4Ref];
   const card1HeadingRef = useRef(null);
   const card2HeadingRef = useRef(null);
   const card3HeadingRef = useRef(null);
   const card4HeadingRef = useRef(null);
+  const cardHeadingRefArray = [
+    card1HeadingRef,
+    card2HeadingRef,
+    card3HeadingRef,
+    card4HeadingRef,
+  ];
 
   useGSAP(
     () => {
@@ -57,28 +65,30 @@ export default function SkillIndex() {
           );
         });
 
-        groupRef.current.dataset.round1offset = offsets[0];
-        groupRef.current.dataset.round2offset = offsets[1];
-        groupRef.current.dataset.round3offset = offsets[2];
+        cardGroupRef.current.dataset.round1offset = offsets[0];
+        cardGroupRef.current.dataset.round2offset = offsets[1];
+        cardGroupRef.current.dataset.round3offset = offsets[2];
 
-        groupRef.current.dataset.initHeight = cumulativeY;
-        gsap.set(groupRef.current, { height: cumulativeY });
+        cardGroupRef.current.dataset.initHeight = cumulativeY;
+        gsap.set(cardGroupRef.current, { height: cumulativeY });
 
-        gsap.set(groupRef.current, { maxHeight: "100vh" });
+        gsap.set(cardGroupRef.current, { maxHeight: "100vh" });
       }
 
       function animateCardImage() {
-        const imgGroup = gsap.utils.toArray(".cardImg");
-        imgGroup.forEach((img, _i) => {
-          let imgScrollTl = gsap.timeline({
+        const videoGroup = gsap.utils.toArray(".videoObj");
+        videoGroup.forEach((video, _i) => {
+          gsap.timeline({
             scrollTrigger: {
-              trigger: img,
-              start: "top bottom",
-              end: "bottom bottom",
-              scrub: 1,
+              trigger: video,
+              start: "top 70%",
+              end: "top top",
+              onEnter: () => video.play(),
+              onLeave: () => video.pause(),
+              onEnterBack: () => video.play(),
+              onLeaveBack: () => video.pause(),
             },
           });
-          imgScrollTl.from(img, { x: 200 });
         });
       }
 
@@ -87,11 +97,10 @@ export default function SkillIndex() {
           scrollTrigger: {
             pin: true,
             scrub: 1,
-            trigger: groupRef.current,
-            start: "top top",
+            trigger: cardGroupRef.current,
+            start: "top 10%",
             endTrigger: card4Ref.current,
             end: "top 360px",
-            markers: true,
           },
         });
         let cardGroup1 = [card2Ref.current, card3Ref.current, card4Ref.current];
@@ -101,7 +110,7 @@ export default function SkillIndex() {
           .to([card2Ref.current, card3Ref.current, card4Ref.current], {
             y: (_i, card) =>
               parseFloat(card.dataset.initialY) -
-              parseFloat(groupRef.current.dataset.round1offset),
+              parseFloat(cardGroupRef.current.dataset.round1offset),
             duration: 1,
             ease: "none",
             onUpdate: () => {
@@ -114,7 +123,7 @@ export default function SkillIndex() {
           .to([card3Ref.current, card4Ref.current], {
             y: (_i, card) =>
               parseFloat(card.dataset.currentY) -
-              parseFloat(groupRef.current.dataset.round2offset),
+              parseFloat(cardGroupRef.current.dataset.round2offset),
             duration: 1,
             ease: "none",
             onUpdate: () => {
@@ -127,7 +136,7 @@ export default function SkillIndex() {
           .to(card4Ref.current, {
             y: () =>
               parseFloat(card4Ref.current.dataset.currentY) -
-              parseFloat(groupRef.current.dataset.round3offset),
+              parseFloat(cardGroupRef.current.dataset.round3offset),
             duration: 1,
             ease: "none",
             onUpdate: () => {
@@ -144,6 +153,8 @@ export default function SkillIndex() {
         animateCardSlide();
         animateCardImage();
       };
+
+      if (!cardGroupRef.current) return;
 
       initialFrame();
 
@@ -162,133 +173,52 @@ export default function SkillIndex() {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
     },
-    { scope: groupRef.current }
+    { scope: cardGroupRef }
   );
 
   return (
-    <ul ref={groupRef} className="relative w-full h-screen bg-pink-500 z-20">
-      <li
-        ref={card1Ref}
-        className="absolute bg-orange-200 w-full max-h-[588] p-4 flex flex-col space-y-4 md:flex-row md:space-y-0 md:px-[2rem]"
-      >
-        <div className="flex flex-col md:justify-between md:w-2/3 md:me-4 lg:me-8">
-          <h3
-            ref={card1HeadingRef}
-            className="py-4 text-2xl font-bold md:py-8 md:text-3xl lg:text-4xl"
-          >
-            Full-Stack Development
-          </h3>
-          <div className="flex flex-col space-y-4 space-x-4 md:space-x-8 md:grid md:grid-cols-3 md:space-y-0">
-            <p className="md:col-span-2 md:pe-8">
-              I specialize in building scalable web applications using React,
-              Redux, and JavaScript for dynamic front-end experiences, while
-              leveraging Django and Node.js for robust back-end solutions. With
-              experience in PostgreSQL and MongoDB, I design efficient database
-              structures to support data-driven applications.
-            </p>
-            <ul className="list-disc text-sm font-bold md:space-y-2">
-              <li>React, Redux, JavaScript, Node.js</li>
-              <li>Django, Django Rest Framework</li>
-              <li>PostgreSQL, MongoDB</li>
-            </ul>
-          </div>
-        </div>
-        <div className="cardImg w-full h-[200px] rounded-sm bg-black  md:w-1/3 md:h-[300px]">
-          <WordCloudScene />
-        </div>
-      </li>
-
-      <li
-        ref={card2Ref}
-        className="absolute bg-purple-200 w-full max-h-[588] p-4 flex flex-col space-y-4 md:flex-row md:space-y-0 md:px-[2rem]"
-      >
-        <div className="flex flex-col md:justify-between md:w-2/3 md:me-4 lg:me-8">
-          <h3
-            ref={card2HeadingRef}
-            className="py-4 text-2xl font-bold md:py-8 md:text-3xl lg:text-4xl"
-          >
-            UI/UX & 3D Web Development
-          </h3>
-          <div className="flex flex-col space-y-4 space-x-4 md:space-x-8 md:grid md:grid-cols-3 md:space-y-0">
-            <p className="md:col-span-2 md:pe-4">
-              Combining my strong design intuition from a marketing background
-              with technical expertise, I create visually engaging interfaces
-              using Tailwind CSS and Bootstrap 5. I also have foundational
-              experience in Three.js (R3F, Drei) and Spline, allowing me to
-              integrate 3D elements and interactive experiences into web
-              applications.
-            </p>
-            <ul className="list-disc text-sm font-bold md:space-y-2">
-              <li>Three.js (R3F, Drei), Spline</li>
-              <li>Tailwind CSS, Bootstrap 5</li>
-              <li>Strong design intuition from marketing experience</li>
-            </ul>
-          </div>
-        </div>
-        <div className="cardImg md:w-1/3 md:h-[300px]">
-          <CityScene />
-        </div>
-      </li>
-
-      <li
-        ref={card3Ref}
-        className="absolute bg-pink-200 w-full max-h-[588] p-4 flex flex-col space-y-4 md:flex-row md:space-y-0 md:px-[2rem]"
-      >
-        <div className="flex flex-col md:justify-between md:w-2/3 md:me-4 lg:me-8">
-          <h3
-            ref={card3HeadingRef}
-            className="py-4 text-2xl font-bold md:py-8 md:text-3xl lg:text-4xl"
-          >
-            DevOps & Deployment
-          </h3>
-          <div className="flex flex-col space-y-4 space-x-4 md:space-x-8 md:grid md:grid-cols-3 md:space-y-0">
-            <p className="md:col-span-2 md:pe-8">
-              I ensure smooth deployment and scalability of applications using
-              Docker and Kubernetes, along with cloud services like AWS. My
-              expertise in Nginx and Git helps optimize server management and
-              version control, while experience in CMS development allows for
-              efficient content management solutions.
-            </p>
-            <ul className="list-disc text-sm font-bold md:space-y-2">
-              <li>Docker, Kubernetes, AWS</li>
-              <li>Nginx, Git, CMS Development</li>
-            </ul>
-          </div>
-        </div>
-        <div className="cardImg md:w-1/3 md:h-[300px]">
-          <VideoScene />
-        </div>
-      </li>
-
-      <li
-        ref={card4Ref}
-        className="absolute bg-green-200 w-full max-h-[588] p-4 flex flex-col space-y-4 md:flex-row md:space-y-0 md:px-[2rem]"
-      >
-        <div className="flex flex-col md:justify-between md:w-2/3 md:me-4 lg:me-8">
-          <h3
-            ref={card4HeadingRef}
-            className="py-4 text-2xl font-bold md:py-8 md:text-3xl lg:text-4xl"
-          >
-            Branding, Marketing & Content Strategy
-          </h3>
-          <div className="flex flex-col space-y-4 space-x-4 md:space-x-8 md:grid md:grid-cols-3 md:space-y-0">
-            <p className="md:col-span-2 md:pe-8">
-              With over 5 years of experience in hotel branding and digital
-              marketing, I have successfully developed and executed branding
-              strategies, website and booking system development, and campaign
-              management. My ability to integrate technology with marketing
-              ensures impactful digital solutions that align with brand
-              positioning.
-            </p>
-            <ul className="list-disc text-sm font-bold md:space-y-2">
-              <li>Hotel branding, digital platforms, & strategy</li>
-              <li>Website & booking system development</li>
-              <li>Content creation, campaign execution, & brand positioning</li>
-            </ul>
-          </div>
-        </div>
-        <div className="cardImg md:w-1/3 md:h-[300px]"></div>
-      </li>
-    </ul>
+    <>
+      <SectionIntro itemsGroup={[programmingImgGroup, skillsetImgGroup]} />
+      <div className="w-full px-4 pt-[4rem] md:pt[5rem] mb-[4rem]">
+        <ul
+          ref={cardGroupRef}
+          className="relative w-full h-screen bg-white z-20"
+        >
+          {skillsetContent.map((item, idx) => (
+            <li
+              key={`item-${idx}`}
+              ref={cardRefArray[idx]}
+              className={`absolute bg-white w-full max-h-[588] p-4 flex flex-col space-y-4 md:flex-row md:space-y-0 md:px-[2rem]
+                ${idx !== 0 ? "border-t border-t-light" : ""}`}
+            >
+              <div className="flex flex-col md:justify-between md:w-2/3 md:me-4 lg:me-8">
+                <h3
+                  ref={cardHeadingRefArray[idx]}
+                  className="py-4 text-2xl text-shade font-bold md:py-8 md:text-3xl lg:text-4xl"
+                >
+                  {item.title}
+                </h3>
+                <div className="flex flex-col space-y-4 space-x-4 md:space-x-8 md:grid md:grid-cols-3 md:space-y-0">
+                  <p className="md:col-span-2 md:pe-8">{item.description}</p>
+                  <ul className="list-disc text-sm font-bold md:space-y-2">
+                    {item.skills.map((skill, i) => (
+                      <li key={i}>{skill}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="md:w-1/3 h-[300px]">
+                <video
+                  className="w-full h-full object-cover rounded-lg videoObj"
+                  src={item.mediaSrc}
+                  muted
+                  playsInline
+                />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

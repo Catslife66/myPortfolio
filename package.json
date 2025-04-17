@@ -10,17 +10,11 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "@react-three/drei": "^9.121.5",
-    "@react-three/fiber": "^8.18.0",
-    "@types/three": "^0.174.0",
-    "flowbite": "^2.5.1",
     "gsap": "^3.12.5",
-    "lerp": "^1.0.3",
-    "leva": "^0.10.0",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
-    "three": "^0.173.0"
+    "split-type": "^0.2.1"
   },
   "devDependencies": {
     "eslint": "^8",

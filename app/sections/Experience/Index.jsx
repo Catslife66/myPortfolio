@@ -1,147 +1,115 @@
-import { useGSAP } from "@gsap/react";
-import React, { useRef } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import ExperienceDetail from "./ExperienceDetail";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
+import { experienceContent, introToExpContent } from "@/app/data/textContent";
+import IntroParagraph from "@/app/components/IntroParagraph";
 
-export default function ExperienceSection() {
-  const divRef = useRef(null);
-  const introRef = useRef(null);
-  const mask1Ref = useRef(null);
-  const mask2Ref = useRef(null);
-  const mask3Ref = useRef(null);
-  const mask4Ref = useRef(null);
-  const detailRef = useRef(null);
-  const content1 = "5+ years in hotel marketing & branding".split(" ");
-  const content2 = "Expertise in digital platforms & strategy".split(" ");
-  const content3 = "Led content, design & hotel booking systems".split(" ");
-  const content4 = "Executed campaigns & brand positioning".split(" ");
+export default function Index() {
+  const flipCardsRef = useRef(null);
 
   useGSAP(
     () => {
-      gsap.registerPlugin(ScrollTrigger);
+      gsap.registerPlugin(Observer);
 
-      const clipShape = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: divRef.current,
-          scrub: 1,
-          pin: true,
-          start: "top top",
-          endTrigger: detailRef.current,
-          end: "top top",
-          ease: "none",
-          duration: 2,
-        },
-      });
-      tl.to(mask1Ref.current, {
-        clipPath: clipShape,
-      })
-        .to(mask2Ref.current, {
-          clipPath: clipShape,
-        })
-        .to(mask3Ref.current, {
-          clipPath: clipShape,
-        })
-        .to(mask4Ref.current, {
-          clipPath: clipShape,
-        })
-        .to(detailRef.current, {
-          yPercent: -100,
-          duration: 1,
+      const flipCards = gsap.utils.toArray(".flipCard");
+
+      flipCards.forEach((card, _id) => {
+        const topEls = card.querySelectorAll(".onTop");
+        const bottomEls = card.querySelectorAll(".onBottom");
+        const imgEls = card.querySelectorAll(".flipCardImg");
+        Observer.create({
+          target: card,
+          onHover: () => {
+            gsap.to(topEls, {
+              top: "-100%",
+            });
+            gsap.to(bottomEls, {
+              translateY: 0,
+            });
+            gsap.to(imgEls, {
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            });
+          },
+          onHoverEnd: () => {
+            gsap.to(topEls, {
+              top: 0,
+            });
+            gsap.to(
+              bottomEls,
+              {
+                translateY: "100%",
+              },
+              "<"
+            );
+            gsap.to(imgEls, {
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+            });
+          },
+          onMove: (self) => {
+            gsap.to(
+              imgEls,
+              {
+                left: `${(self.x / window.innerWidth) * 100}%`,
+                top: "-100%",
+              },
+              0
+            );
+          },
         });
+      });
     },
-    { scope: divRef.current }
+    { scope: flipCardsRef }
   );
 
   return (
-    <div ref={divRef} className="relative w-full h-screen">
+    <section className="w-full">
+      <IntroParagraph
+        content={introToExpContent.h2}
+        cls={introToExpContent.class}
+        containerCls="py-[4rem] md:py[5rem]"
+      />
+
       <div
-        ref={introRef}
-        className="relative w-full h-screen mx-auto justify-center items-center px-4 py-[4rem] text-xl font-bold md:text-3xl md:py-[8rem] lg:text-4xl"
+        ref={flipCardsRef}
+        className="w-full min-h-[70vh] md:min-h-[55vh] px-4 flex flex-1 flex-col items-center overflow-hidden pt-[4rem] md:pt-[5rem]"
       >
-        {/* text outline */}
-        <div className="relative w-full h-full flex flex-col justify-center items-center">
-          <div className="flex flex-row flex-wrap mb-8">
-            {content1.map((char, i) => (
-              <span key={i} className="char-stroke text-white pe-4">
-                {char}
-              </span>
-            ))}
-          </div>
-          <div className="flex flex-row flex-wrap mb-8">
-            {content2.map((char, i) => (
-              <span key={i} className="char-stroke text-white pe-4">
-                {char}
-              </span>
-            ))}
-          </div>
-          <div className="flex flex-row flex-wrap mb-8">
-            {content3.map((char, i) => (
-              <span key={i} className="char-stroke text-white pe-4">
-                {char}
-              </span>
-            ))}
-          </div>
-          <div className="flex flex-row flex-wrap mb-8">
-            {content4.map((char, i) => (
-              <span key={i} className="char-stroke text-white pe-4">
-                {char}
-              </span>
-            ))}
-          </div>
-        </div>
-        {/* text fill */}
-        <div className="absolute top-0 left-0 w-full h-full text-yellow-500 justify-center items-center px-4 py-[4rem] md:py-[8rem] flex flex-col">
+        {experienceContent.map((item, id) => (
           <div
-            ref={mask1Ref}
-            className="text-mask flex flex-row flex-wrap mb-8"
+            key={id}
+            className="flipCard w-full flex flex-col justify-center items-center relative py-2 md:grid md:grid-cols-12 hover:cursor-pointer"
           >
-            {content1.map((char, i) => (
-              <span key={i} className="pe-4">
-                {char}
+            <div className="md:col-span-2 relative flex items-end justify-start overflow-y-hidden">
+              <span className="onBottom text-shade">{item.time}</span>
+              <span className="onTop text-light">{item.time}</span>
+            </div>
+            <div className="md:col-span-8 relative flex items-end justify-center overflow-y-hidden text-xl md:text-3xl font-bold">
+              <span className="onBottom text-shade text-center">
+                {item.workplace}
               </span>
-            ))}
-          </div>
-          <div
-            ref={mask2Ref}
-            className="text-mask flex flex-row flex-wrap mb-8"
-          >
-            {content2.map((char, i) => (
-              <span key={i} className="pe-4">
-                {char}
+              <span className="onTop text-light text-center">
+                {item.workplace}
               </span>
-            ))}
-          </div>
-          <div
-            ref={mask3Ref}
-            className="text-mask flex flex-row flex-wrap mb-8"
-          >
-            {content3.map((char, i) => (
-              <span key={i} className="pe-4">
-                {char}
+            </div>
+            <div className="md:col-span-2 relative flex items-end justify-end overflow-y-hidden">
+              <span className="onBottom text-shade text-end">
+                {item.position}
               </span>
-            ))}
+              <span className="onTop text-light text-end">{item.position}</span>
+            </div>
+
+            <div className="flipCardImg">
+              <div className="w-[200px] h-[250px]">
+                <img src="assets/images/bird.jpg" alt="txt" />
+              </div>
+              <div className="w-[200px] h-[250px] absolute top-4 left-4">
+                <img src="assets/images/bird.jpg" alt="txt" />
+              </div>
+            </div>
           </div>
-          <div
-            ref={mask4Ref}
-            className="text-mask flex flex-row flex-wrap mb-8"
-          >
-            {content4.map((char, i) => (
-              <span key={i} className="pe-4">
-                {char}
-              </span>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
-      {/* experience details */}
-      <div
-        ref={detailRef}
-        className="detail-section absolute bottom-0 py-4 md:py-[8rem]"
-      >
-        <ExperienceDetail />
-      </div>
-    </div>
+    </section>
   );
 }

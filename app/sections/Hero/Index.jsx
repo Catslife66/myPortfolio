@@ -1,135 +1,150 @@
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import FloatIcons from "./FloatIcons";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
+import { heroContent } from "@/app/data/textContent";
 
 function ExploreBtn() {
-  const content = "SCROLL TO EXPLORE MORE";
-  const contentArray = content.split("");
+  const exploreBtnRef = useRef(null);
 
-  useGSAP(() => {
-    const originalSpans = document.querySelectorAll(".line1");
-    const copySpans = document.querySelectorAll(".line2");
+  const btnSpans = (cls) =>
+    heroContent.btn.split("").map((char, i) => (
+      <span
+        key={i}
+        className={cls}
+        style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+      >
+        {char}
+      </span>
+    ));
 
-    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+  useGSAP(
+    () => {
+      const originalSpans =
+        exploreBtnRef.current.querySelectorAll(".originalLine");
+      const copySpans = exploreBtnRef.current.querySelectorAll(".copyLine");
 
-    tl.to(
-      originalSpans,
-      {
-        duration: 2,
-        rotationX: 90,
-        transformOrigin: "top",
-        stagger: {
-          each: 0.1,
-          ease: "none",
-          from: "start",
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+
+      tl.to(
+        originalSpans,
+        {
+          rotationX: 90,
+          transformOrigin: "top",
+          stagger: {
+            each: 0.1,
+            ease: "none",
+            from: "start",
+          },
         },
-      },
-      0
-    ).to(
-      copySpans,
-      {
-        duration: 2,
-        rotationX: 0,
-        opacity: 1,
-        transformOrigin: "bottom",
-        stagger: {
-          each: 0.1,
-          ease: "none",
-          from: "start",
+        0
+      ).to(
+        copySpans,
+        {
+          rotationX: 0,
+          opacity: 1,
+          transformOrigin: "bottom",
+          stagger: {
+            each: 0.1,
+            ease: "none",
+            from: "start",
+          },
         },
-      },
-      0
-    );
-  }, {});
+        0
+      );
+    },
+    { scope: exploreBtnRef }
+  );
 
   return (
-    <div className="relative flex flex-col">
-      <h3 className="font-extrabold text-sm text-green-800 flex flex-row">
-        {contentArray.map((char, i) => (
-          <span
-            key={i}
-            className="line2"
-            style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-          >
-            {char}
-          </span>
-        ))}
+    <div ref={exploreBtnRef} className="relative flex flex-col">
+      <h3 className="font-semibold text-sm text-shade flex flex-row uppercase">
+        {btnSpans("copyLine")}
       </h3>
-      <h3 className="absolute font-extrabold text-sm flex flex-row">
-        {contentArray.map((char, i) => (
-          <span
-            key={i}
-            className="font-extrabold text-sm line1"
-            style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-          >
-            {char}
-          </span>
-        ))}
+      <h3 className="absolute font-semibold text-light text-sm flex flex-row uppercase">
+        {btnSpans("originalLine")}
       </h3>
     </div>
   );
 }
 
-export default function Hero() {
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const deltaX = (clientX - window.innerWidth / 2) / (window.innerWidth / 2);
-    const deltaY =
-      (clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+export default function Index() {
+  const heroContainerRef = useRef(null);
+  const shadowTopRef = useRef(null);
+  const shadowBottomRef = useRef(null);
 
-    handleTextShadowMove({ deltaX, deltaY });
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger, Observer);
 
-    function handleTextShadowMove({ deltaX, deltaY }) {
-      const tl = gsap.timeline({
-        duration: 0.3,
-        ease: "power3.out",
-      });
-      const xOffset = 2;
-      const yOffset = 8;
-      tl.to(
-        ".h1-shadow",
-        {
-          translateX: deltaX >= 0 ? `${xOffset}%` : `-${xOffset}%`,
-          translateY: deltaY >= 0 ? `${yOffset}%` : `-${yOffset}%`,
+      Observer.create({
+        target: heroContainerRef.current,
+        onMove: (self) => {
+          const clientX = self.x;
+          const clientY = self.y;
+          const deltaX =
+            (clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+          const deltaY =
+            (clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+          const tl = gsap.timeline({
+            duration: 0.3,
+            ease: "power3.out",
+          });
+          const xOffset = 2;
+          const yOffset = 8;
+          tl.to(
+            [shadowTopRef.current, shadowBottomRef.current],
+            {
+              translateX: deltaX >= 0 ? `${xOffset}%` : `-${xOffset}%`,
+              translateY: deltaY >= 0 ? `${yOffset}%` : `-${yOffset}%`,
+            },
+            0
+          );
         },
-        0
-      );
-    }
-  };
+      });
+    },
+    { scope: heroContainerRef }
+  );
 
   return (
     <section
-      className="z-10 w-full h-screen mx-auto flex flex-col justify-center items-center"
-      onMouseMove={handleMouseMove}
+      ref={heroContainerRef}
+      className="bg-white z-10 w-full h-screen mx-auto flex flex-col justify-center items-center"
     >
       <div className="w-full h-screen relative z-5 flex flex-col justify-center items-center">
         <div className="relative">
           <h1 className="absolute top-0 left-0 z-10 char-stroke px-4 text-white text-6xl font-extrabold text-center uppercase md:text-[120px]">
             Xiaohong
           </h1>
-          <h1 className="h1-shadow char-stroke px-4 text-white text-6xl font-extrabold text-center uppercase md:text-[120px]">
+          <h1
+            ref={shadowTopRef}
+            className="h1-shadow char-stroke px-4 text-white text-6xl font-extrabold text-center uppercase md:text-[120px]"
+          >
             Xiaohong
           </h1>
         </div>
-        <div className="text-gray-500 p-4 text-center">
-          A self-taught Programmer with a passion for Web development and a
-          strong background in Marketing.
+        <div className="text-shade p-4 text-center font-light md:font-normal">
+          {heroContent.paragraph}
         </div>
         <div className="relative">
           <h1 className="absolute top-0 left-0 z-10 char-stroke px-4 text-white text-6xl font-extrabold text-center uppercase md:text-[120px]">
             Zhuang
           </h1>
-          <h1 className="h1-shadow px-4 text-6xl font-extrabold text-center uppercase md:text-[120px]">
+          <h1
+            ref={shadowBottomRef}
+            className="h1-shadow px-4 text-6xl font-extrabold text-center uppercase md:text-[120px]"
+          >
             Zhuang
           </h1>
         </div>
-        <div className="text-gray-400 text-sm text-center py-2">aka Josie</div>
+        <div className="text-shade text-sm font-light text-center py-2 md:font-normal">
+          {heroContent.h4}
+        </div>
         <div className="absolute bottom-10">
           <ExploreBtn />
         </div>
       </div>
-
-      <FloatIcons />
     </section>
   );
 }
