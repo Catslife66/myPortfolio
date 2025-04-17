@@ -1,7 +1,7 @@
 import gsap from "gsap";
-import { useRef, useState } from "react";
+import Image from "next/image";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/Observer";
 import { experienceContent, introToExpContent } from "@/app/data/textContent";
 import IntroParagraph from "@/app/components/IntroParagraph";
@@ -101,10 +101,10 @@ export default function Index() {
 
             <div className="flipCardImg">
               <div className="w-[200px] h-[250px]">
-                <img src="assets/images/bird.jpg" alt="txt" />
+                <Image src="assets/images/bird.jpg" alt="txt" />
               </div>
               <div className="w-[200px] h-[250px] absolute top-4 left-4">
-                <img src="assets/images/bird.jpg" alt="txt" />
+                <Image src="assets/images/bird.jpg" alt="txt" />
               </div>
             </div>
           </div>

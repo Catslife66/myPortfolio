@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -69,7 +70,7 @@ export default function ProjectsList() {
   return (
     <div className="grid grid-cols-12 gap-8">
       <div className="col-span-5 col-start-2">
-        <img src="assets/images/pic_1.jpg" alt="test" />
+        <Image src="assets/images/pic_1.jpg" alt="test" />
       </div>
       <div className="col-span-5 space-y-4">
         <h3 className="font-semibold text-lg">Project Name</h3>

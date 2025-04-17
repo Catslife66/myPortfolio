@@ -1,3 +1,4 @@
+import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
@@ -60,7 +61,7 @@ export default function SectionIntro({ itemsGroup = [] }) {
                 key={i}
                 className="flex flex-1 justify-center items-center me-4 w-full h-full"
               >
-                <img
+                <Image
                   src={item.src}
                   alt={item.alt || "image"}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}

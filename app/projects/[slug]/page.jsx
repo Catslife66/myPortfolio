@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export default function page() {
   return (
@@ -45,7 +46,7 @@ export default function page() {
       </div>
 
       <div>
-        <img src="../assets/images/placeholder.jpg" alt="placeholder" />
+        <Image src="../assets/images/placeholder.jpg" alt="placeholder" />
       </div>
 
       <div>
