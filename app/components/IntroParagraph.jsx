@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Observer from "gsap/Observer";
 import { useRef } from "react";
 
 export default function IntroParagraph({ content, cls, containerCls = "" }) {
@@ -9,8 +10,9 @@ export default function IntroParagraph({ content, cls, containerCls = "" }) {
 
   useGSAP(() => {
     if (!h2Ref.current) return;
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, Observer);
     const chars = h2Ref.current.querySelectorAll(".h2Char");
+
     const scrollTl = gsap.timeline({
       scrollTrigger: {
         trigger: h2Ref.current,
@@ -18,6 +20,7 @@ export default function IntroParagraph({ content, cls, containerCls = "" }) {
         end: "top 50%",
       },
     });
+
     scrollTl.fromTo(
       chars,
       {
