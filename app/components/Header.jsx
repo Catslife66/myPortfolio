@@ -81,26 +81,22 @@ const Header = () => {
         </div>
         <div className="w-full hidden md:flex md:justify-end md:items-center">
           <ul className="flex flex-col font-medium md:flex-row md:gap-4">
-            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
             <NavLink
-              title="Projects"
-              href={"/test"}
+              title="My CV"
+              href={"/assets/files/cv.pdf"}
               onClick={handleChangePath}
             />
-            <NavLink title="Q&A" href={"/another"} onClick={handleChangePath} />
-            <NavLink
-              title="Contact"
-              href={"/test"}
-              onClick={handleChangePath}
-            />
+            <NavLink title="Contact" href={"mailto:josie58@live.cn"} />
           </ul>
         </div>
         <div className={`w-full py-8 ${isClosed ? "hidden" : ""}`}>
           <ul className="flex flex-col space-y-8">
-            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
-            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
-            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
-            <NavLink title="About" href={"/test"} onClick={handleChangePath} />
+            <NavLink
+              title="My CV"
+              href={"/assets/files/cv.pdf"}
+              onClick={handleChangePath}
+            />
+            <NavLink title="Contact" href={"mailto:josie58@live.cn"} />
           </ul>
         </div>
       </div>

@@ -179,7 +179,7 @@ export default function SkillIndex() {
   return (
     <>
       <SectionIntro itemsGroup={[programmingImgGroup, skillsetImgGroup]} />
-      <div className="w-full px-4 pt-[4rem] md:pt[5rem] mb-[4rem]">
+      <div className="w-full px-4 pt-[4rem] mb-[4rem] md:pt-[5rem] lg:pt-[6rem]">
         <ul
           ref={cardGroupRef}
           className="relative w-full h-screen bg-white z-20"
@@ -188,7 +188,7 @@ export default function SkillIndex() {
             <li
               key={`item-${idx}`}
               ref={cardRefArray[idx]}
-              className={`absolute bg-white w-full max-h-[588] p-4 flex flex-col space-y-4 md:flex-row md:space-y-0 md:px-[2rem]
+              className={`absolute bg-white w-full max-h-[588] p-4 flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:px-[2rem]
                 ${idx !== 0 ? "border-t border-t-light" : ""}`}
             >
               <div className="flex flex-col md:justify-between md:w-2/3 md:me-4 lg:me-8">
@@ -210,7 +210,7 @@ export default function SkillIndex() {
               <div className="md:w-1/3 h-[300px]">
                 <video
                   className="w-full h-full object-cover rounded-lg videoObj"
-                  src={item.mediaSrc}
+                  src={item.mediasrc}
                   muted
                   playsInline
                 />

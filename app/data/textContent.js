@@ -31,7 +31,7 @@ export const experienceContent = [
     workplace: "Howard Johnson Hotel Haikou",
     position: "Marketing & Communication",
     image: {
-      src: "assets/images/bird.jpg",
+      src: "/assets/images/bird.jpg",
       alt: "placeholder",
     },
   },
@@ -40,21 +40,21 @@ export const experienceContent = [
     time: "Aug 2015 to Oct 2016",
     workplace: "HUALUXE Seaview Haikou",
     position: "Marketing & Communication",
-    image: { src: "assets/images/ph_ver1.jpg", alt: "sample" },
+    image: { src: "/assets/images/ph_ver1.jpg", alt: "sample" },
   },
   {
     id: 3,
     time: "Mar 2017 to Jun 2017",
     workplace: "LN Hotel Boutique Foshan",
     position: "Marketing & Communication",
-    image: { src: "assets/images/ph_ver2.jpg", alt: "text" },
+    image: { src: "/assets/images/ph_ver2.jpg", alt: "text" },
   },
   {
     id: 4,
     time: "Aug 2017 to Dec 2020",
     workplace: "China Southern Airlines Hotels",
     position: "Branding & Positioning",
-    image: { src: "assets/images/ph_ver3.jpg", alt: "see" },
+    image: { src: "/assets/images/ph_ver3.jpg", alt: "see" },
   },
 ];
 
@@ -70,35 +70,35 @@ export const expToSkillContent = {
 };
 
 export const aboutImgGroup = [
-  { type: "image", src: "assets/images/pic_1.jpg", alt: "text" },
-  { type: "image", src: "assets/images/pic_2.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_1.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_2.jpg", alt: "text" },
   { type: "text", text: "about" },
-  { type: "image", src: "assets/images/pic_3.jpg", alt: "text" },
-  { type: "image", src: "assets/images/pic_4.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_3.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_4.jpg", alt: "text" },
 ];
 
 export const meImgGroup = [
-  { type: "image", src: "assets/images/pic_5.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_5.jpg", alt: "text" },
   { type: "text", text: "me" },
-  { type: "image", src: "assets/images/pic_6.jpg", alt: "text" },
-  { type: "image", src: "assets/images/pic_7.jpg", alt: "text" },
-  { type: "image", src: "assets/images/pic_8.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_6.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_7.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_8.jpg", alt: "text" },
 ];
 
 export const programmingImgGroup = [
-  { type: "image", src: "assets/images/pic_1.jpg", alt: "text" },
-  { type: "image", src: "assets/images/pic_2.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_1.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_2.jpg", alt: "text" },
   { type: "text", text: "programming" },
-  { type: "image", src: "assets/images/pic_3.jpg", alt: "text" },
-  { type: "image", src: "assets/images/pic_4.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_3.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_4.jpg", alt: "text" },
 ];
 
 export const skillsetImgGroup = [
-  { type: "image", src: "assets/images/pic_5.jpg", alt: "text" },
-  { type: "image", src: "assets/images/pic_6.jpg", alt: "text" },
-  { type: "image", src: "assets/images/pic_7.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_5.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_6.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_7.jpg", alt: "text" },
   { type: "text", text: "skillset" },
-  { type: "image", src: "assets/images/pic_8.jpg", alt: "text" },
+  { type: "image", src: "/assets/images/pic_8.jpg", alt: "text" },
 ];
 
 export const skillsetContent = [
@@ -111,7 +111,7 @@ export const skillsetContent = [
       "Django, Django Rest Framework",
       "PostgreSQL, MongoDB",
     ],
-    mediaSrc: "assets/videos/video1.mov",
+    mediasrc: "/assets/videos/video1.mov",
   },
   {
     title: "UI/UX & 3D Web Development",
@@ -120,16 +120,16 @@ export const skillsetContent = [
     skills: [
       "Three.js (R3F, Drei), Spline",
       "Tailwind CSS, Bootstrap 5",
-      "Strong design intuition from marketing experience<",
+      "Strong design intuition from marketing experience",
     ],
-    mediaSrc: "assets/videos/video1.mov",
+    mediasrc: "/assets/videos/video1.mov",
   },
   {
     title: "DevOps & Deployment",
     description:
       "I ensure smooth deployment and scalability of applications using Docker and Kubernetes, along with cloud services like AWS. My expertise in Nginx and Git helps optimize server management and version control, while experience in CMS development allows for efficient content management solutions. specialize in building scalable web applications using React, Redux, and JavaScript for dynamic front-end experiences, while leveraging Django and Node.js for robust back-end solutions. With experience in PostgreSQL and MongoDB, I design efficient database structures to support data-driven applications.",
     skills: ["Docker, Kubernetes, AWS", "Nginx, Git, CMS Development"],
-    mediaSrc: "assets/videos/video1.mov",
+    mediasrc: "/assets/videos/video1.mov",
   },
   {
     title: "Branding, Marketing & Content Strategy",
@@ -140,6 +140,6 @@ export const skillsetContent = [
       "Website & booking system development",
       "Content creation, campaign execution, & brand positioning",
     ],
-    mediaSrc: "assets/videos/video1.mov",
+    mediasrc: "/assets/videos/video1.mov",
   },
 ];

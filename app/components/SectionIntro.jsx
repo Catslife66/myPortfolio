@@ -59,11 +59,14 @@ export default function SectionIntro({ itemsGroup = [] }) {
             item.type === "image" ? (
               <div
                 key={i}
-                className="flex flex-1 justify-center items-center me-4 w-full h-full"
+                className="flex flex-1 justify-center items-center me-4 w-full h-full relative"
               >
                 <Image
                   src={item.src}
                   alt={item.alt || "image"}
+                  fill={true}
+                  priority={true}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               </div>

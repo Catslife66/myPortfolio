@@ -69,6 +69,10 @@ nav {
     1px -1px 0 var(--themePrimary), -1px 1px 0 var(--themePrimary);
 }
 
+.copyLine {
+  transform: rotateX(90deg);
+}
+
 /* work experience */
 .onTop {
   position: absolute;
@@ -87,6 +91,22 @@ nav {
   left: 0%;
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   z-index: -1;
+}
+
+.h2Char {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* skills */
+.in-light {
+  background: white;
+  color: black;
+}
+
+.in-dark {
+  background: var(--themePrimary);
+  color: var(--themeSecondary);
 }
 
 footer {

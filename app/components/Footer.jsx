@@ -15,7 +15,7 @@ export default function Footer() {
             <div className="grid grid-cols-3 items-center mb-4">
               <h4 className="text-xs text-gray-400 uppercase">find me on</h4>
               <div className="flex flex-row space-x-4">
-                <Link href={"/"} className="">
+                <Link href={"https://github.com/Catslife66"} className="">
                   <svg
                     className="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"

@@ -3,11 +3,14 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ReactLenis, useLenis } from "lenis/react";
 import Header from "./components/Header";
 import Cursor from "./components/Cursor";
 import Footer from "./components/Footer";
 
 export default function Template({ children }) {
+  const lenis = useLenis(({ scroll }) => {});
+
   const loadingRef = useRef(null);
   const mainRef = useRef(null);
 
@@ -31,7 +34,7 @@ export default function Template({ children }) {
   }, {});
 
   return (
-    <>
+    <ReactLenis root>
       {/* <Cursor /> */}
       <Header />
       {/* page loading animation */}
@@ -39,7 +42,7 @@ export default function Template({ children }) {
         {Array.from({ length: 10 }).map((_, rowIndex) => (
           <div key={rowIndex} className="flex flex-row flex-1">
             {Array.from({ length: 10 }).map((_, colIndex) => (
-              <div key={colIndex} className="block"></div>
+              <div key={colIndex} className="block border-1 border-light"></div>
             ))}
           </div>
         ))}
@@ -49,6 +52,6 @@ export default function Template({ children }) {
         {children}
       </main>
       <Footer />
-    </>
+    </ReactLenis>
   );
 }

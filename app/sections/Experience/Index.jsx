@@ -100,11 +100,21 @@ export default function Index() {
             </div>
 
             <div className="flipCardImg">
-              <div className="w-[200px] h-[250px]">
-                <Image src="assets/images/bird.jpg" alt="txt" />
+              <div className="w-[200px] h-[250px] absolute">
+                <Image
+                  src="/assets/images/bird.jpg"
+                  fill={true}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  alt="txt"
+                />
               </div>
               <div className="w-[200px] h-[250px] absolute top-4 left-4">
-                <Image src="assets/images/bird.jpg" alt="txt" />
+                <Image
+                  src="/assets/images/bird.jpg"
+                  fill={true}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  alt="txt"
+                />
               </div>
             </div>
           </div>
