@@ -83,7 +83,7 @@ export default function ProjectCard({ project }) {
           {project.tags.map((tag, i) => (
             <span
               key={i}
-              className="px-2 py-1 text-xs bg-light rounded-2xl me-2 mb-2"
+              className="px-2 py-1 text-xs bg-secondary text-white rounded-lg me-2 mb-2"
             >
               {tag}
             </span>
@@ -97,7 +97,7 @@ export default function ProjectCard({ project }) {
             href={`projects/${project.slug}`}
             onMouseEnter={handleMouseEnter}
           >
-            <span ref={spanRef} className="text-shade">
+            <span ref={spanRef} className="text-secondary uppercase">
               See full case detail
             </span>
           </Link>
@@ -113,7 +113,7 @@ export default function ProjectCard({ project }) {
             <path
               ref={pathRef}
               d=""
-              stroke="#0B3954"
+              stroke="#AF95E2"
               strokeWidth="2"
               strokeLinecap="round"
             />

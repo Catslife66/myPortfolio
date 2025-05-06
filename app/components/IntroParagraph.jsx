@@ -1,63 +1,43 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
-import ScrollTrigger from "gsap/ScrollTrigger";
-import Observer from "gsap/Observer";
 import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitText from "gsap/SplitText";
 
-export default function IntroParagraph({ content, cls, containerCls = "" }) {
-  const h2Ref = useRef(null);
+export default function IntroParagraph({ content, cls }) {
+  useGSAP(() => {
+    gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  useGSAP(
-    () => {
-      if (!h2Ref.current) return;
-      gsap.registerPlugin(ScrollTrigger);
-      const target = document.querySelector(`.${cls}`);
-      const chars = target.querySelectorAll(".h2Char");
+    gsap.set(`.${cls}`, { opacity: 1 });
 
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: h2Ref.current,
-          start: "top 80%",
-          end: "top 50%",
-          scrub: 1,
-        },
-      });
-
-      scrollTl.to(chars, {
-        opacity: 1,
-        y: 0,
-        stagger: {
-          amount: 1.5,
-          from: "start",
-          ease: "none",
-        },
-      });
-
-      function handleResize() {
-        gsap.set(chars, { opacity: 1, y: 0 });
-      }
-
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    },
-    { scope: h2Ref }
-  );
+    SplitText.create(`.${cls}`, {
+      type: "words,lines",
+      linesClass: "line++",
+      wordsClass: "words",
+      autoSplit: true,
+      mask: "lines",
+      onSplit: (self) => {
+        return gsap.from(self.lines, {
+          scrollTrigger: {
+            trigger: `.${cls}`,
+            start: "top 60%",
+            end: "bottom 50%",
+            scrub: true,
+          },
+          yPercent: 100,
+          opacity: 0,
+          stagger: 0.1,
+        });
+      },
+    });
+  }, {});
 
   return (
-    <div className={`grid grid-cols-12 ${containerCls}`}>
+    <div className="grid grid-cols-12 py-4 md:py-[4rem]">
       <h2
-        ref={h2Ref}
-        className={`col-span-10 col-start-2 flex flex-row flex-wrap justify-end text-shade text-2xl md:text-4xl uppercase ${cls}`}
+        className={`${cls} opacity-0 tracking-wider italic font-bold col-span-10 col-start-2 text-white text-2xl text-end md:text-4xl uppercase`}
       >
-        {content.split(" ").map((char, idx) => (
-          <span key={idx} className="me-3 mb-1 h2Char">
-            {char}
-          </span>
-        ))}
+        {content}
       </h2>
     </div>
   );

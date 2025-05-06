@@ -2,22 +2,22 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full p-4 bg-light md:mt-[4rem]">
+    <footer className="w-full p-4 bg-secondary md:mt-[4rem]">
       <div className="w-full">
         <div className="flex flex-col justify-center pt-8 md:grid md:grid-cols-12 md:content-center min-h-48">
           <Link
             href={"/"}
-            className="text-4xl text-shade py-4 md:text-center md:col-span-6 lg:text-6xl xl:text-8xl uppercase font-extrabold"
+            className="text-4xl text-primary py-4 md:text-center md:col-span-6 lg:text-6xl xl:text-8xl uppercase font-extrabold"
           >
             JosieDev
           </Link>
           <div className="flex flex-col md:col-span-4 md:col-start-8">
-            <div className="grid grid-cols-3 items-center mb-4">
-              <h4 className="text-xs text-gray-400 uppercase">find me on</h4>
+            <div className="grid grid-cols-3 items-center mb-4 text-white">
+              <h4 className="text-xs uppercase">find me on</h4>
               <div className="flex flex-row space-x-4">
                 <Link href={"https://github.com/Catslife66"} className="">
                   <svg
-                    className="w-6 h-6 text-gray-800 dark:text-white"
+                    className="w-6 h-6 text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -34,7 +34,7 @@ export default function Footer() {
                 </Link>
                 <Link href={"/"} className="">
                   <svg
-                    className="w-6 h-6 text-gray-800 dark:text-white"
+                    className="w-6 h-6 text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -52,8 +52,8 @@ export default function Footer() {
                 </Link>
               </div>
             </div>
-            <div className="grid grid-cols-3 items-center mb-4">
-              <h4 className="text-xs text-gray-400 uppercase">get in touch</h4>
+            <div className="grid grid-cols-3 items-center mb-4 text-white">
+              <h4 className="text-xs uppercase">get in touch</h4>
               <Link
                 href="mailto:josie58@live.cn"
                 className="md:font-semibold hover:underline"
@@ -62,16 +62,16 @@ export default function Footer() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-3 items-center mb-4">
-              <h4 className="text-xs text-gray-400 uppercase">base in</h4>
-              <div className="md:font-semibold">Falkirk</div>
+            <div className="grid grid-cols-3 items-center mb-4 text-white">
+              <h4 className="text-xs uppercase">base in</h4>
+              <div className="md:font-semibold">Falkirk, UK</div>
             </div>
           </div>
         </div>
-        <hr className="my-4 md:my-6 border-gray-400" />
+        <hr className="my-4 md:my-6 border-primary" />
         <div className="flex flex-row items-center space-x-1 justify-center">
-          <span className="text-xs text-gray-500">© 2025</span>
-          <span className="text-xs text-gray-500">All rights preserve.</span>
+          <span className="text-xs text-primary">© 2025</span>
+          <span className="text-xs text-primary">All rights preserve.</span>
         </div>
       </div>
     </footer>

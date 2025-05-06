@@ -6,22 +6,26 @@ export const heroContent = {
 };
 
 export const experienceIntro = {
-  content:
-    "I’m a self-taught developer with a background in branding, storytelling, and digital strategy. Before I started writing code, I was crafting brand experiences-thinking deeply about how things look, feel, and function. That creative mindset still drives my work today. My path into programming grew from a curiosity to build, to understand how things work behind the screen. Since then, I’ve become fluent in tools like React, Django, and Docker, and I’m continually exploring the intersection of thoughtful design and scalable architecture. That blend of creativity and systems thinking began in my previous career and that’s where the story starts.",
+  content: [
+    "I’m a self-taught full-stack developer with a background in branding, storytelling, and digital strategy. During my 5 years in the hospitality industry, I worked on digital initiatives that included launching booking platforms, shaping content strategy, and collaborating across teams to bring cohesive brand experiences to life. My interest in development grew naturally from a desire to understand and build the systems behind those experiences.",
+    "Today, I work with tools like React, Django, and Docker, combining creative thinking with technical precision. I’m especially drawn to the intersection of thoughtful design and scalable architecture—where usability, clarity, and performance meet. My foundation in communication and design continues to shape how I approach development: with empathy for users and a focus on building purposeful, well-crafted digital products.",
+  ],
+
   highlightWords: [
     "self-taught",
-    "experiences-thinking",
+    "hospitality",
+    "React",
+    "Django",
+    "content",
+    "experiences",
     "digital",
-    "mindset",
-    "programming",
-    "creativity",
+    "communication",
+    "creative",
   ],
 };
 
 export const introToExpContent = {
-  h2: "I bring over 5 years of experience in marketing and communications within the hospitality industry, where I led digital initiatives, developed brand systems, and executed cross-functional campaigns for international hotel groups.",
-  highlightWords: ["marketing", "hospitality", "brand"],
-  class: "introToExpContent",
+  h2: "Experience in hospitality marketing, brand strategy & cross-functional collaboration",
 };
 
 export const experienceContent = [
@@ -31,7 +35,7 @@ export const experienceContent = [
     workplace: "Howard Johnson Hotel Haikou",
     position: "Marketing & Communication",
     image: {
-      src: "/assets/images/bird.jpg",
+      src: "/assets/images/ver1.jpg",
       alt: "placeholder",
     },
   },
@@ -40,21 +44,21 @@ export const experienceContent = [
     time: "Aug 2015 to Oct 2016",
     workplace: "HUALUXE Seaview Haikou",
     position: "Marketing & Communication",
-    image: { src: "/assets/images/ph_ver1.jpg", alt: "sample" },
+    image: { src: "/assets/images/ver2.jpg", alt: "sample" },
   },
   {
     id: 3,
     time: "Mar 2017 to Jun 2017",
     workplace: "LN Hotel Boutique Foshan",
     position: "Marketing & Communication",
-    image: { src: "/assets/images/ph_ver2.jpg", alt: "text" },
+    image: { src: "/assets/images/ver2.jpg", alt: "text" },
   },
   {
     id: 4,
     time: "Aug 2017 to Dec 2020",
     workplace: "China Southern Airlines Hotels",
     position: "Branding & Positioning",
-    image: { src: "/assets/images/ph_ver3.jpg", alt: "see" },
+    image: { src: "/assets/images/ver1.jpg", alt: "see" },
   },
 ];
 
@@ -65,8 +69,7 @@ export const themeColours = {
 };
 
 export const expToSkillContent = {
-  h2: "I like building things that are useful, usable, and occasionally just for fun. These projects highlight how I think and solve problems—from intuitive interfaces and smooth interactions to solid architecture and real-world deployment.",
-  class: "expToSkillContent",
+  h2: "A mix of real-world experience & personal projects that shaped my development journey",
 };
 
 export const aboutImgGroup = [
@@ -122,14 +125,14 @@ export const skillsetContent = [
       "Tailwind CSS, Bootstrap 5",
       "Strong design intuition from marketing experience",
     ],
-    mediasrc: "/assets/videos/video1.mov",
+    mediasrc: "/assets/videos/video2.mov",
   },
   {
     title: "DevOps & Deployment",
     description:
       "I ensure smooth deployment and scalability of applications using Docker and Kubernetes, along with cloud services like AWS. My expertise in Nginx and Git helps optimize server management and version control, while experience in CMS development allows for efficient content management solutions. specialize in building scalable web applications using React, Redux, and JavaScript for dynamic front-end experiences, while leveraging Django and Node.js for robust back-end solutions. With experience in PostgreSQL and MongoDB, I design efficient database structures to support data-driven applications.",
     skills: ["Docker, Kubernetes, AWS", "Nginx, Git, CMS Development"],
-    mediasrc: "/assets/videos/video1.mov",
+    mediasrc: "/assets/videos/video3.mov",
   },
   {
     title: "Branding, Marketing & Content Strategy",
@@ -140,6 +143,6 @@ export const skillsetContent = [
       "Website & booking system development",
       "Content creation, campaign execution, & brand positioning",
     ],
-    mediasrc: "/assets/videos/video1.mov",
+    mediasrc: "/assets/videos/video4.mov",
   },
 ];

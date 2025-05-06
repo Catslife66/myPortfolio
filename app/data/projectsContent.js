@@ -5,7 +5,7 @@ export const projectsContent = [
     description:
       "A multi-platform hotel booking system including a WeChat mini programme and official website for a 9-hotel group, reducing OTA costs and unifying brand presence.",
     tags: [
-      "WeChat Mini Program",
+      "WeChat Mini Programme",
       "CMS",
       "UX",
       "Booking System",
@@ -76,13 +76,7 @@ export const projectsContent = [
     name: "Independent Financial Advisor Company Website Redesign",
     description:
       "Redesigned and rebuilt a financial advisor company website using WordPress, modernising its digital presence while retaining familiarity. Migrated from legacy Umbraco CMS to WordPress for better client control and long-term stability.",
-    tags: [
-      "WordPress",
-      "CMS Migration",
-      "UX Design",
-      "Financial Services",
-      "Elementor",
-    ],
+    tags: ["WordPress", "CMS", "UX Design", "Financial Services", "Elementor"],
     year: "2024",
     location: "Falkirk, UK",
     role: "UI improvements",

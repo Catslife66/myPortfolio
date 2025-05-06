@@ -75,7 +75,9 @@ export default function SectionIntro({ itemsGroup = [] }) {
                 key={i}
                 className="slide-item text-2xl md:text-6xl font-thin flex flex-1 justify-center items-center me-4"
               >
-                <h2 className="text-shade uppercase">{item.text}</h2>
+                <h2 className="text-primary italic bg-lighter px-4 py-2 uppercase">
+                  {item.text}
+                </h2>
               </div>
             )
           )}

@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/Observer";
 import { heroContent } from "@/app/data/textContent";
 
@@ -59,10 +58,10 @@ function ExploreBtn() {
 
   return (
     <div ref={exploreBtnRef} className="relative flex flex-col">
-      <h3 className="font-semibold text-sm text-shade flex flex-row uppercase">
+      <h3 className="font-bold text-xs text-primary flex flex-row uppercase">
         {btnSpans("copyLine")}
       </h3>
-      <h3 className="absolute font-semibold text-light text-sm flex flex-row uppercase">
+      <h3 className="absolute font-bold text-secondary text-xs flex flex-row uppercase">
         {btnSpans("originalLine")}
       </h3>
     </div>
@@ -76,7 +75,7 @@ export default function Index() {
 
   useGSAP(
     () => {
-      gsap.registerPlugin(ScrollTrigger, Observer);
+      gsap.registerPlugin(Observer);
 
       Observer.create({
         target: heroContainerRef.current,
@@ -109,26 +108,27 @@ export default function Index() {
 
   return (
     <section
+      id="hero"
       ref={heroContainerRef}
-      className="bg-white z-10 w-full h-screen mx-auto flex flex-col justify-center items-center"
+      className="bg-base z-10 w-full h-screen mx-auto flex flex-col justify-center items-center"
     >
-      <div className="w-full h-screen relative z-5 flex flex-col justify-center items-center">
+      <div className="w-full h-screen relative z-5 flex flex-col justify-center items-center space-y-4">
         <div className="relative">
-          <h1 className="absolute top-0 left-0 z-10 char-stroke px-4 text-white text-6xl font-extrabold text-center uppercase md:text-[120px]">
+          <h1 className="absolute top-0 left-0 z-10 char-stroke px-4 text-secondary text-6xl font-extrabold text-center uppercase md:text-[120px]">
             Xiaohong
           </h1>
           <h1
             ref={shadowTopRef}
-            className="h1-shadow char-stroke px-4 text-white text-6xl font-extrabold text-center uppercase md:text-[120px]"
+            className="h1-shadow px-4 text-6xl font-extrabold text-center uppercase md:text-[120px]"
           >
             Xiaohong
           </h1>
         </div>
-        <div className="text-shade p-4 text-center font-light md:font-normal">
+        <div className="text-primary bg-lighter rounded-lg font-bold italic px-4 py-2 text-center">
           {heroContent.paragraph}
         </div>
         <div className="relative">
-          <h1 className="absolute top-0 left-0 z-10 char-stroke px-4 text-white text-6xl font-extrabold text-center uppercase md:text-[120px]">
+          <h1 className="absolute top-0 left-0 z-10 char-stroke px-4 text-secondary text-6xl font-extrabold text-center uppercase md:text-[120px]">
             Zhuang
           </h1>
           <h1
@@ -138,7 +138,7 @@ export default function Index() {
             Zhuang
           </h1>
         </div>
-        <div className="text-shade text-sm font-light text-center py-2 md:font-normal">
+        <div className="text-primary text-sm text-center py-2 font-normal">
           {heroContent.h4}
         </div>
         <div className="absolute bottom-10">

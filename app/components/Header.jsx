@@ -36,9 +36,11 @@ const Header = () => {
           <Link
             href={"/"}
             onClick={handleChangePath}
-            className="flex items-center px-4 py-2 rounded-xl font-light hover:text-purple-500"
+            className="flex items-center"
           >
-            <span className="text-xl font-extrabold text-shade">JosieDev</span>
+            <span className="text-xl italic font-extrabold text-primary">
+              JosieDev
+            </span>
           </Link>
           <button
             type="button"

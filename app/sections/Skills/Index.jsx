@@ -177,26 +177,27 @@ export default function SkillIndex() {
   );
 
   return (
-    <>
+    <section id="skills">
       <SectionIntro itemsGroup={[programmingImgGroup, skillsetImgGroup]} />
-      <div className="w-full px-4 pt-[4rem] mb-[4rem] md:pt-[5rem] lg:pt-[6rem]">
+      <div className="w-full px-4 pt-[4rem] md:pt-[5rem] lg:pt-[6rem]">
         <ul
           ref={cardGroupRef}
-          className="relative w-full h-screen bg-white z-20"
+          className="relative w-full h-screen bg-base z-20"
         >
           {skillsetContent.map((item, idx) => (
             <li
               key={`item-${idx}`}
               ref={cardRefArray[idx]}
-              className={`absolute bg-white w-full max-h-[588] p-4 flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:px-[2rem]
-                ${idx !== 0 ? "border-t border-t-light" : ""}`}
+              className={`absolute bg-base w-full max-h-[588] p-4 flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:px-[2rem] ${
+                idx !== 0 ? "border-t border-t-secondary" : ""
+              }`}
             >
               <div className="flex flex-col md:justify-between md:w-2/3 md:me-4 lg:me-8">
                 <h3
                   ref={cardHeadingRefArray[idx]}
-                  className="py-4 text-2xl text-shade font-bold md:py-8 md:text-3xl lg:text-4xl"
+                  className="py-4 text-2xl text-white font-bold md:py-8 md:text-3xl lg:text-4xl"
                 >
-                  {item.title}
+                  <span className="bg-secondary italic px-4">{item.title}</span>
                 </h3>
                 <div className="flex flex-col space-y-4 space-x-4 md:space-x-8 md:grid md:grid-cols-3 md:space-y-0">
                   <p className="md:col-span-2 md:pe-8">{item.description}</p>
@@ -219,6 +220,6 @@ export default function SkillIndex() {
           ))}
         </ul>
       </div>
-    </>
+    </section>
   );
 }

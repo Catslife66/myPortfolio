@@ -140,10 +140,10 @@ export default function ProjectDetail({ params }) {
     <div className="w-full py-[8rem] grid grid-cols-12">
       <div className="col-span-10 col-start-2">
         <div className="flex flex-col space-y-8">
-          <h2 className="text-6xl font-bold text-shade">{project.name}</h2>
-          <div className="w-full grid grid-cols-5 gap-4 text-sm text-gray-500 py-4 md:py-8">
+          <h2 className="text-6xl font-bold text-primary">{project.name}</h2>
+          <div className="w-full grid grid-cols-5 gap-4 text-sm py-4 md:py-8">
             <div className="col">
-              <h4 className="text-sm font-bold text-shade border-l-2 border-shade px-2 mb-4">
+              <h4 className="text-sm font-bold border-l-2 border-secondary px-2 mb-4">
                 Tags
               </h4>
               <div className="flex flex-col">
@@ -155,25 +155,25 @@ export default function ProjectDetail({ params }) {
               </div>
             </div>
             <div className="col">
-              <h4 className="text-sm font-bold text-shade border-l-2 border-shade px-2 mb-4">
+              <h4 className="text-sm font-bold border-l-2 border-secondary px-2 mb-4">
                 Year
               </h4>
               <div className="px-2">{project.year}</div>
             </div>
             <div className="col">
-              <h4 className="text-sm font-bold text-shade border-l-2 border-shade px-2 mb-4">
+              <h4 className="text-sm font-bold border-l-2 border-secondary px-2 mb-4">
                 Location
               </h4>
               <div className="px-2">{project.location}</div>
             </div>
             <div className="col">
-              <h4 className="text-sm font-bold text-shade border-l-2 border-shade px-2 mb-4">
+              <h4 className="text-sm font-bold border-l-2 border-secondary px-2 mb-4">
                 Role
               </h4>
               <div className="px-2">{project.role}</div>
             </div>
             <div className="col">
-              <h4 className="text-sm font-bold text-shade border-l-2 border-shade px-2 mb-4">
+              <h4 className="text-sm font-bold border-l-2 border-secondary px-2 mb-4">
                 Overview
               </h4>
               <div className="px-2">{project.description}</div>
@@ -193,7 +193,7 @@ export default function ProjectDetail({ params }) {
         </div>
         {/* overview */}
         {project.overview?.length > 0 && (
-          <div className="text-2xl text-shade font-semibold py-4 md:py-8">
+          <div className="text-2xl font-semibold py-4 md:py-8">
             {project.overview}
           </div>
         )}
@@ -250,7 +250,7 @@ export default function ProjectDetail({ params }) {
                       {item.title}
                       <ul className="ps-4">
                         {item.txt.map((t, i) => (
-                          <li key={i} className="list-disc text-base ms-2">
+                          <li key={i} className="list-disc ms-2">
                             {t}
                           </li>
                         ))}
@@ -299,7 +299,7 @@ export default function ProjectDetail({ params }) {
           <div className="flex mt-4 py-4 justify-center items-center md:py-8">
             <Link
               href={"/"}
-              className="border border-shade-2 rounded-lg px-4 py-2 flex flex-row hover:underline hover:bg-light"
+              className="border border-secondary-2 rounded-lg px-4 py-2 flex flex-row hover:underline hover:bg-light"
             >
               View source code
               <svg

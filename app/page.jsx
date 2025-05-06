@@ -14,11 +14,8 @@ export default function Home() {
     <>
       <Hero />
       <IntroSelf />
-
       <Experience />
-
       <SkillIndex />
-
       <Index />
     </>
   );

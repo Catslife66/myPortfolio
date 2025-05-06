@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --themePrimary: #0b3954;
-  --themeSecondary: #bfd7ea;
-  --themeWhite: #f2f1f0;
-  --themeBlack: #181818;
+  --bg: #f9f9f9;
+  --primary: #3e0b5e;
+  --secondary: #af95e2;
+  --lighter: #cae894;
+  --darker: #224c25;
 }
 
 body {
@@ -14,6 +15,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   overscroll-behavior: none;
+  background: var(--bg);
 }
 
 /* loader component */
@@ -33,7 +35,7 @@ body {
 
 .block {
   flex: 1;
-  background-color: var(--themeSecondary);
+  background-color: var(--secondary);
   transform: scaleY(1);
   will-change: transform;
   z-index: 100;
@@ -60,19 +62,44 @@ nav {
 
 /* hero section */
 .h1-shadow {
-  color: var(--themePrimary);
+  color: var(--primary);
   transform: translate(1%, 4%);
 }
 
 .char-stroke {
-  text-shadow: 1px 1px 0 var(--themePrimary), -1px -1px 0 var(--themePrimary),
-    1px -1px 0 var(--themePrimary), -1px 1px 0 var(--themePrimary);
+  text-shadow: 1px 1px 0 var(--primary), -1px -1px 0 var(--primary),
+    1px -1px 0 var(--primary), -1px 1px 0 var(--primary);
 }
 
 .copyLine {
   transform: rotateX(90deg);
 }
 
+/* intro */
+
+.introwords {
+  font-size: 1.4rem;
+  padding: 4px;
+}
+
+.words {
+  position: relative;
+  padding: 4px 10px;
+  z-index: 1;
+  margin-bottom: 8px;
+}
+
+.words::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100 0, 100 100, 0 100);
+  background: var(--secondary);
+  z-index: -1;
+}
 /* work experience */
 .onTop {
   position: absolute;
@@ -91,11 +118,6 @@ nav {
   left: 0%;
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   z-index: -1;
-}
-
-.h2Char {
-  opacity: 0;
-  transform: translateY(10px);
 }
 
 /* skills */

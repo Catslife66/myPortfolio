@@ -42,7 +42,7 @@ export default function Template({ children }) {
         {Array.from({ length: 10 }).map((_, rowIndex) => (
           <div key={rowIndex} className="flex flex-row flex-1">
             {Array.from({ length: 10 }).map((_, colIndex) => (
-              <div key={colIndex} className="block border-1 border-light"></div>
+              <div key={colIndex} className="block"></div>
             ))}
           </div>
         ))}
