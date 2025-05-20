@@ -86,7 +86,7 @@ export default function SkillIndex() {
   return (
     <section id="skills" className="w-full mb-[4rem]">
       <SectionIntro itemsGroup={[programmingImgGroup, skillsetImgGroup]} />
-      <div className="w-full px-4 pt-[4rem] md:pt-[5rem] lg:pt-[6rem]">
+      <div className="w-full px-4 pt-[4rem]">
         <div
           ref={cardGroupRef}
           className="relative w-full h-screen bg-base z-20 md:max-h-[100vh]"
@@ -104,10 +104,14 @@ export default function SkillIndex() {
                   ref={(el) => (cardHeadingRefs.current[idx] = el)}
                   className="py-4 text-xl text-white font-bold md:py-8 md:text-2xl lg:text-3xl"
                 >
-                  <span className="bg-primary italic px-4">{item.title}</span>
+                  <span className="text-secondary text-shadow">
+                    {item.title}
+                  </span>
                 </h3>
                 <div className="flex flex-col flex-1 items-start space-y-4 space-x-4 md:space-x-8 md:grid md:grid-cols-3 md:space-y-0">
-                  <p className="md:col-span-2 md:pe-8">{item.description}</p>
+                  <p className="font-light text-lg md:col-span-2 md:pe-8">
+                    {item.description}
+                  </p>
                   <ul className="list-disc text-sm font-semibold md:font-bold md:space-y-2">
                     {item.skills.map((skill, i) => (
                       <li key={i}>{skill}</li>

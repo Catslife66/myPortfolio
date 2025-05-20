@@ -76,7 +76,7 @@ nav {
   transform: rotateX(90deg);
 }
 
-/* intro banner */
+/* section intro banner */
 .text-bg {
   position: absolute;
   top: 50%;
@@ -90,27 +90,12 @@ nav {
   margin-bottom: 8px;
 }
 
-.introwords11,
-.introwords21,
-.introwords43,
-.introwords61,
-.introwords79,
-.introwords93,
-.introwords112 {
-  font-weight: 600;
-  text-shadow: -2px 1px 0px var(--primary);
-  color: var(--secondary);
-}
-
-.words {
-  padding: 4px 10px;
-  background: var(--secondary);
-  margin-bottom: 8px;
-}
-
 /* work experience */
-.expWord {
-  margin-bottom: 8px;
+.expWord,
+.proWord,
+.conWord {
+  padding-top: 4px;
+  margin-right: 8px;
 }
 
 .onTop {
@@ -184,24 +169,13 @@ canvas {
   font-weight: bold;
 }
 
-/* projects */
-.card0 {
-  transform: translateY(0);
-  z-index: 1;
+/* reuse classes */
+.text-shadow {
+  text-shadow: -3px 1px 0px var(--primary);
 }
 
-.card1 {
-  transform: translateY(100%);
-  z-index: 2;
-}
-
-.card2 {
-  transform: translateY(100%);
-  z-index: 1;
-}
-
-.protext {
-  text-shadow: -2px 1px 0px var(--primary);
+.heading-shadow {
+  text-shadow: -3px 1px 0px var(--primary);
 }
 
 footer {
@@ -210,11 +184,22 @@ footer {
 
 /* md */
 @media (min-width: 768px) {
-  .card {
-    height: 332px;
-  }
   .introwords {
     margin-bottom: 16px;
+  }
+
+  .expWord,
+  .proWord,
+  .conWord {
+    padding-top: 4px;
+    margin-bottom: 1rem;
+    margin-right: 8px;
+  }
+  .text-shadow {
+    text-shadow: -3px 1px 0px var(--primary);
+  }
+  .heading-shadow {
+    text-shadow: -6px 1px 0px var(--primary);
   }
 }
 

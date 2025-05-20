@@ -7,7 +7,7 @@ export const heroContent = {
 
 export const experienceIntro = {
   content:
-    "I’m a self-taught full-stack developer with a background in branding, storytelling, and digital strategy. During my 5 years in the hospitality industry, I worked on digital initiatives that included launching booking platforms, shaping content strategy, and collaborating across teams to bring cohesive brand experiences to life. My interest in development grew naturally from a desire to understand and build the systems behind those experiences. Today, I work with tools like React, Django, and Docker, combining creative thinking with technical precision. I’m especially drawn to the intersection of thoughtful design and scalable architecture—where usability, clarity, and performance meet. My foundation in communication and design continues to shape how I approach development: with empathy for users and a focus on building purposeful, well-crafted digital products.",
+    "I’m a self-taught full-stack developer with a background in branding, storytelling, and digital strategy. During my 5 years in the hospitality industry, I worked on digital initiatives that included launching booking platforms, shaping content strategy, and collaborating across teams to bring cohesive brand experiences to life. My interest in development grew naturally from a desire to understand and build the systems behind those experiences. Today, I work with a range of tools and frameworks including React, Next.js, Django, Node.js, Docker, and AWS—combining creative thinking with technical precision. I’m especially drawn to the intersection of thoughtful design and scalable architecture — where usability, clarity, and performance meet. My foundation in communication and design continues to shape how I approach development: with empathy for users and a focus on building purposeful, well-crafted digital products.",
 };
 
 export const introToExpContent = {
@@ -91,7 +91,7 @@ export const skillsetContent = [
   {
     title: "Full-Stack Development",
     description:
-      "I specialise in building scalable web applications using React, Redux, and JavaScript for dynamic front-end experiences, while leveraging Django and Node.js for robust back-end solutions. With experience in PostgreSQL and MongoDB, I design efficient database structures to support data-driven applications.",
+      "I specialise in building scalable web applications using React, Next.js for dynamic front-end experiences, while leveraging Django and Node.js for robust back-end solutions. With experience in PostgreSQL and MongoDB, I design efficient database structures to support data-driven applications.",
     skills: [
       "JavaScript, Node.js, Next.js, React, Redux",
       "Python, Django, Django REST Framework, Django Ninja",

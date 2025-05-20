@@ -4,6 +4,8 @@ import { useGSAP } from "@gsap/react";
 import { Observer } from "gsap/Observer";
 import { heroContent } from "@/app/data/textContent";
 
+gsap.registerPlugin(useGSAP, Observer);
+
 function ExploreBtn() {
   const exploreBtnRef = useRef(null);
 
@@ -75,8 +77,6 @@ export default function Index() {
 
   useGSAP(
     () => {
-      gsap.registerPlugin(Observer);
-
       Observer.create({
         target: heroContainerRef.current,
         onMove: (self) => {

@@ -91,8 +91,12 @@ const Header = () => {
             <NavLink title="Contact" href={"mailto:josie58@live.cn"} />
           </ul>
         </div>
-        <div className={`w-full py-8 ${isClosed ? "hidden" : ""}`}>
-          <ul className="flex flex-col space-y-8">
+        <div
+          className={`w-full mt-4 md:hidden md:py-8 ${
+            isClosed ? "hidden" : ""
+          }`}
+        >
+          <ul className="flex flex-col bg-lighter">
             <NavLink
               title="My CV"
               href={"/assets/files/cv.pdf"}

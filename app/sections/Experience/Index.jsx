@@ -3,7 +3,7 @@ import ExpHeading from "./ExpHeading";
 
 export default function Index() {
   return (
-    <section id="experience" className="w-full py-4 md:py-8">
+    <section id="experience" className="w-full h-screen flex flex-col">
       <ExpHeading />
       <FlipCards />
     </section>

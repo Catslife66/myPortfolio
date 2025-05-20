@@ -237,7 +237,7 @@ export default function Contact() {
   return (
     <section
       id="getintouch"
-      className="w-full py-8 md:py-[4rem] md:mt-[4rem] overflow-hidden z-0 bg-bg"
+      className="w-full py-8 md:py-[4rem] md:mt-[4rem] overflow-hidden z-0 bg-base"
     >
       <div
         ref={containerRef}
@@ -246,7 +246,7 @@ export default function Contact() {
         <div ref={contentRef} className="flex gap-8">
           {Array.from({ length: 3 }).map((_, i) => (
             <div key={i} className="flex items-center gap-4">
-              <span className="uppercase text-8xl font-extrabold text-lighter whitespace-nowrap">
+              <span className="uppercase text-8xl font-extrabold text-secondary char-stroke whitespace-nowrap">
                 get in touch
               </span>
               <span className="finger">

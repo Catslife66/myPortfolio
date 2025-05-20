@@ -1,13 +1,12 @@
-import ProjectCards from "./ProjectCards";
-import IntroParagraph from "@/app/components/IntroParagraph";
-import { expToSkillContent } from "@/app/data/textContent";
 import Continue from "./Continue";
+import ProjectSlides from "./ProjectSlides";
+import ProHeading from "./ProHeading";
 
 export default function Index() {
   return (
     <section id="projects" className="w-full mt-[8rem] lg:mt-[4rem]">
-      <IntroParagraph content={expToSkillContent.h2} cls="project" />
-      <ProjectCards />
+      <ProHeading />
+      <ProjectSlides />
       <Continue />
     </section>
   );

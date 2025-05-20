@@ -64,7 +64,7 @@ export default function FlipCards() {
   return (
     <div
       ref={flipCardsRef}
-      className="w-full min-h-[70vh] md:min-h-[55vh] px-4 flex flex-1 flex-col items-center overflow-hidden pt-[4rem] md:pt-[6rem]"
+      className="w-full px-4 flex flex-1 flex-col justify-center items-center overflow-hidden"
     >
       {experienceContent.map((item, id) => (
         <div
@@ -72,24 +72,20 @@ export default function FlipCards() {
           className="flipCard w-full flex flex-col justify-center items-center relative py-2 md:grid md:grid-cols-12 hover:cursor-pointer"
         >
           <div className="md:col-span-2 relative flex items-end justify-start overflow-y-hidden">
-            <span className="onBottom text-darker">{item.time}</span>
-            <span className="onTop text-secondary">{item.time}</span>
+            <span className="onBottom text-secondary">{item.time}</span>
+            <span className="onTop">{item.time}</span>
           </div>
-          <div className="md:col-span-8 relative flex items-end justify-center overflow-y-hidden text-xl md:text-3xl font-bold">
-            <span className="onBottom text-darker text-center">
+          <div className="md:col-span-8 relative flex items-end justify-center overflow-y-hidden text-xl font-semibold md:text-2xl lg:text-3xl">
+            <span className="onBottom text-secondary text-center">
               {item.workplace}
             </span>
-            <span className="onTop text-secondary text-center">
-              {item.workplace}
-            </span>
+            <span className="onTop text-center">{item.workplace}</span>
           </div>
           <div className="md:col-span-2 relative flex items-end justify-end overflow-y-hidden">
-            <span className="onBottom text-darker text-end">
+            <span className="onBottom text-secondary text-end">
               {item.position}
             </span>
-            <span className="onTop text-secondary text-end">
-              {item.position}
-            </span>
+            <span className="onTop text-end">{item.position}</span>
           </div>
 
           <div className="flipCardImg">

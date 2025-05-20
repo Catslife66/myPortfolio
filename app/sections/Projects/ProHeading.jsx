@@ -1,4 +1,3 @@
-import { introToExpContent } from "@/app/data/textContent";
 import gsap from "gsap";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -6,22 +5,23 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
 
 gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
+import { expToSkillContent } from "@/app/data/textContent";
 
-export default function ExpHeading() {
-  const expHeadingRef = useRef(null);
+export default function ProHeading() {
+  const proHeadingRef = useRef(null);
 
   useGSAP(
     () => {
-      SplitText.create(".expheading", {
+      SplitText.create(".proheading", {
         type: "words, lines",
-        wordsClass: "expWord",
+        wordsClass: "proWord",
         linesClass: "line++",
         autoSplit: true,
         mask: "lines",
         onSplit: (self) => {
           return gsap.from(self.lines, {
             scrollTrigger: {
-              trigger: ".expheading",
+              trigger: ".proheading",
               start: "top 80%",
               end: "top 50%",
               scrub: true,
@@ -33,16 +33,15 @@ export default function ExpHeading() {
         },
       });
     },
-    { scope: expHeadingRef }
+    { scope: proHeadingRef }
   );
-
   return (
     <div
-      ref={expHeadingRef}
+      ref={proHeadingRef}
       className="grid grid-cols-12 py-[4rem] md:py-[6rem]"
     >
       <div className="col-span-10 col-start-2 text-secondary heading-shadow font-bold text-xl text-end uppercase md:text-[2.5rem]">
-        <div className="expheading">{introToExpContent.h2}</div>
+        <div className="proheading">{expToSkillContent.h2}</div>
       </div>
     </div>
   );

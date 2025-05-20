@@ -45,15 +45,33 @@ export default function Continue() {
     { scope: textRef }
   );
   return (
-    <div ref={textRef} className="grid grid-cols-12 md:-mt-[4rem]">
+    <div ref={textRef} className="grid grid-cols-12">
       <div className="col-start-2 col-span-10">
-        <h4 className="continue text-[3rem] font-thin text-end">
+        <h4 className="continue font-semibold text-shadow text-secondary text-2xl text-center md:text-3xl">
           I’m actively building and learning. For more, visit my{" "}
           <Link
-            href={"/"}
-            className="link-bg px-4 py-2 rounded-lg relative overflow-hidden"
+            href={"https://github.com/Catslife66"}
+            className="px-4 py-2 rounded-lg relative overflow-hidden"
           >
-            <div className="absolute inset-0 bg-secondary scale-x-0 rounded-lg fill-bg"></div>
+            <div className="absolute inset-0 bg-secondary scale-x-0 rounded-lg fill-bg">
+              <svg
+                className="text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13.213 9.787a3.391 3.391 0 0 0-4.795 0l-3.425 3.426a3.39 3.39 0 0 0 4.795 4.794l.321-.304m-.321-4.49a3.39 3.39 0 0 0 4.795 0l3.424-3.426a3.39 3.39 0 0 0-4.794-4.795l-1.028.961"
+                />
+              </svg>
+            </div>
             <span className="relative text-white font-semibold">github</span>
           </Link>
         </h4>
