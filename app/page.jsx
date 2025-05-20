@@ -8,6 +8,7 @@ import Experience from "./sections/Experience/Index";
 import IntroSelf from "./sections/IntroSelf/Index";
 import SkillIndex from "./sections/Skills/Index";
 import Index from "./sections/Projects/Index";
+import Contact from "./sections/Contact/Index";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Experience />
       <SkillIndex />
       <Index />
+      <Contact />
     </>
   );
 }

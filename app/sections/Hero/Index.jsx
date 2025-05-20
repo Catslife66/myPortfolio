@@ -124,7 +124,7 @@ export default function Index() {
             Xiaohong
           </h1>
         </div>
-        <div className="text-primary bg-lighter rounded-lg font-bold italic px-4 py-2 text-center">
+        <div className="text-primary bg-lighter rounded-lg font-bold italic mx-4 px-4 py-2 text-center">
           {heroContent.paragraph}
         </div>
         <div className="relative">

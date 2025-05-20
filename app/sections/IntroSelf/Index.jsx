@@ -8,54 +8,56 @@ import {
   experienceIntro,
   meImgGroup,
 } from "@/app/data/textContent";
-
 import SectionIntro from "@/app/components/SectionIntro";
+import { useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function IntroSelf() {
-  const txt =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur beatae quis corrupti quia totam placeat voluptas rerum temporibus, aspernatur quo, eos ratione harum est nulla. Soluta quos ab ex deserunt commodi ipsam nam exercitationem magni quisquam neque tempore officia voluptas quia, esse dolores perspiciatis explicabo eius ullam suscipit, unde rerum.";
+  const contentRef = useRef(null);
 
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+  useGSAP(
+    () => {
+      SplitText.create(".introself", {
+        type: "chars, words, lines",
+        charsClass: "chars",
+        wordsClass: "introwords++",
+        linesClass: "line",
+        autoSplit: true,
+        mask: "lines",
+        onSplit: (self) => {
+          let tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: ".introself",
+              start: "top 70%",
+              end: "top 25%",
+              scrub: true,
+            },
+          });
 
-    SplitText.create(".introself", {
-      type: "words, lines",
-      wordsClass: "introwords++",
-      linesClass: "line",
-      autoSplit: true,
-      mask: "lines",
-      onSplit: (self) => {
-        return gsap.from(self.lines, {
-          scrollTrigger: {
-            trigger: ".introself",
-            start: "top 60%",
-            end: "bottom 50%",
-            scrub: true,
-          },
-          yPercent: 100,
-          opacity: 0,
-          stagger: 0.1,
-        });
-      },
-    });
-  }, {});
+          return tl.from(self.chars, {
+            xPercent: 50,
+            opacity: 0,
+            stagger: 0.1,
+            ease: "power1.inOut",
+          });
+        },
+      });
+    },
+    { scope: contentRef }
+  );
 
   return (
     <section id="intro" className="w-full py-4 md:py-8">
       <SectionIntro itemsGroup={[aboutImgGroup, meImgGroup]} />
-      <div className="grid grid-cols-12 py-[4rem] md:py-[6rem]">
-        <div className="col-span-10 col-start-2 space-y-8">
-          {experienceIntro.content.map((txt, idx) => (
-            <p
-              key={idx}
-              className="introself text-xl tracking-widest leading-[2.5rem]"
-            >
-              {txt}
-            </p>
-          ))}
+      <div
+        ref={contentRef}
+        className="grid grid-cols-12 py-[4rem] md:py-[6rem]"
+      >
+        <div className="col-span-10 col-start-2  z-10 text-lg font-light md:text-xl lg:text-2xl">
+          <div className="introself">{experienceIntro.content}</div>
         </div>
       </div>
     </section>
   );
 }
-// text-xl tracking-widest font-bold text-darker leading-[2.5rem]

@@ -6,22 +6,8 @@ export const heroContent = {
 };
 
 export const experienceIntro = {
-  content: [
-    "I’m a self-taught full-stack developer with a background in branding, storytelling, and digital strategy. During my 5 years in the hospitality industry, I worked on digital initiatives that included launching booking platforms, shaping content strategy, and collaborating across teams to bring cohesive brand experiences to life. My interest in development grew naturally from a desire to understand and build the systems behind those experiences.",
-    "Today, I work with tools like React, Django, and Docker, combining creative thinking with technical precision. I’m especially drawn to the intersection of thoughtful design and scalable architecture—where usability, clarity, and performance meet. My foundation in communication and design continues to shape how I approach development: with empathy for users and a focus on building purposeful, well-crafted digital products.",
-  ],
-
-  highlightWords: [
-    "self-taught",
-    "hospitality",
-    "React",
-    "Django",
-    "content",
-    "experiences",
-    "digital",
-    "communication",
-    "creative",
-  ],
+  content:
+    "I’m a self-taught full-stack developer with a background in branding, storytelling, and digital strategy. During my 5 years in the hospitality industry, I worked on digital initiatives that included launching booking platforms, shaping content strategy, and collaborating across teams to bring cohesive brand experiences to life. My interest in development grew naturally from a desire to understand and build the systems behind those experiences. Today, I work with tools like React, Django, and Docker, combining creative thinking with technical precision. I’m especially drawn to the intersection of thoughtful design and scalable architecture—where usability, clarity, and performance meet. My foundation in communication and design continues to shape how I approach development: with empathy for users and a focus on building purposeful, well-crafted digital products.",
 };
 
 export const introToExpContent = {
@@ -36,7 +22,7 @@ export const experienceContent = [
     position: "Marketing & Communication",
     image: {
       src: "/assets/images/ver1.jpg",
-      alt: "placeholder",
+      alt: "A crow on a branch shouting",
     },
   },
   {
@@ -44,29 +30,26 @@ export const experienceContent = [
     time: "Aug 2015 to Oct 2016",
     workplace: "HUALUXE Seaview Haikou",
     position: "Marketing & Communication",
-    image: { src: "/assets/images/ver2.jpg", alt: "sample" },
+    image: { src: "/assets/images/ver2.jpg", alt: "Japanese temple" },
   },
   {
     id: 3,
     time: "Mar 2017 to Jun 2017",
     workplace: "LN Hotel Boutique Foshan",
     position: "Marketing & Communication",
-    image: { src: "/assets/images/ver2.jpg", alt: "text" },
+    image: { src: "/assets/images/ver3.jpg", alt: "Sakura blossom" },
   },
   {
     id: 4,
     time: "Aug 2017 to Dec 2020",
     workplace: "China Southern Airlines Hotels",
     position: "Branding & Positioning",
-    image: { src: "/assets/images/ver1.jpg", alt: "see" },
+    image: {
+      src: "/assets/images/ver4.jpg",
+      alt: "A lassie facing to the street",
+    },
   },
 ];
-
-export const themeColours = {
-  main: "#645394",
-  shade: "#2B233F",
-  tint: "#DDD9E9",
-};
 
 export const expToSkillContent = {
   h2: "A mix of real-world experience & personal projects that shaped my development journey",
@@ -110,29 +93,26 @@ export const skillsetContent = [
     description:
       "I specialise in building scalable web applications using React, Redux, and JavaScript for dynamic front-end experiences, while leveraging Django and Node.js for robust back-end solutions. With experience in PostgreSQL and MongoDB, I design efficient database structures to support data-driven applications.",
     skills: [
-      "React, Redux, JavaScript, Node.js",
-      "Django, Django Rest Framework",
+      "JavaScript, Node.js, Next.js, React, Redux",
+      "Python, Django, Django REST Framework, Django Ninja",
       "PostgreSQL, MongoDB",
     ],
-    mediasrc: "/assets/videos/video1.mov",
   },
   {
     title: "UI/UX & 3D Web Development",
     description:
       "Combining my strong design intuition from a marketing background with technical expertise, I create visually engaging interfaces using Tailwind CSS and Bootstrap 5. I also have foundational experience in Three.js (R3F, Drei) and Spline, allowing me to integrate 3D elements and interactive experiences into web applications. specialize in building scalable web applications using React, Redux, and JavaScript for dynamic front-end experiences, while leveraging Django and Node.js for robust back-end solutions. With experience in PostgreSQL and MongoDB, I design efficient database structures to support data-driven applications.",
     skills: [
-      "Three.js (R3F, Drei), Spline",
+      "Three.js(R3F, Drei), Spline",
       "Tailwind CSS, Bootstrap 5",
       "Strong design intuition from marketing experience",
     ],
-    mediasrc: "/assets/videos/video2.mov",
   },
   {
     title: "DevOps & Deployment",
     description:
       "I ensure smooth deployment and scalability of applications using Docker and Kubernetes, along with cloud services like AWS. My expertise in Nginx and Git helps optimize server management and version control, while experience in CMS development allows for efficient content management solutions. specialize in building scalable web applications using React, Redux, and JavaScript for dynamic front-end experiences, while leveraging Django and Node.js for robust back-end solutions. With experience in PostgreSQL and MongoDB, I design efficient database structures to support data-driven applications.",
     skills: ["Docker, Kubernetes, AWS", "Nginx, Git, CMS Development"],
-    mediasrc: "/assets/videos/video3.mov",
   },
   {
     title: "Branding, Marketing & Content Strategy",
@@ -143,6 +123,5 @@ export const skillsetContent = [
       "Website & booking system development",
       "Content creation, campaign execution, & brand positioning",
     ],
-    mediasrc: "/assets/videos/video4.mov",
   },
 ];

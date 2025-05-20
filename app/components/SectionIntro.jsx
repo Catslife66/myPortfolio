@@ -30,11 +30,12 @@ export default function SectionIntro({ itemsGroup = [] }) {
           },
           0
         );
+
         tl.to(
           ".slide .slide-item",
           {
             flexGrow: 1.2,
-            fontWeight: 600,
+            fontWeight: 900,
           },
           0
         );
@@ -73,9 +74,12 @@ export default function SectionIntro({ itemsGroup = [] }) {
             ) : (
               <div
                 key={i}
-                className="slide-item text-2xl md:text-6xl font-thin flex flex-1 justify-center items-center me-4"
+                className="slide-item text-2xl md:text-6xl font-thin flex flex-1 justify-center items-center me-4 relative"
               >
-                <h2 className="text-primary italic bg-lighter px-4 py-2 uppercase">
+                <h2 className="text-primary italic text-center px-4 py-2 uppercase z-10">
+                  {item.text}
+                </h2>
+                <h2 className="text-secondary italic text-center px-4 py-2 uppercase z-10 text-bg">
                   {item.text}
                 </h2>
               </div>
